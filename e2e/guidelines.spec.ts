@@ -23,7 +23,8 @@ test('mobile controls have generous targets without overflowing the page', async
       controls.flatMap((control) => {
         const box = control.getBoundingClientRect()
         if (!box.width || !box.height || control.classList.contains('sr-only')) return []
-        return box.width < 44 || box.height < 44
+        // Whole pixels: a transform mid-animation reports 43.99997 for a 44px box.
+        return Math.round(box.width) < 44 || Math.round(box.height) < 44
           ? [
               {
                 name: control.getAttribute('aria-label') ?? control.textContent,
