@@ -50,7 +50,7 @@
     "typescript": "~7.0.2",
     "vitest": "^5.0.4"
   },
-  "description": "Valencia Agents: agentic workflows that run back-office processes, under human approval, then handed over.",
+  "description": "Natomas AI: AI consulting for engineering departments in the Sacramento area.",
   "license": "MIT",
   "engines": {
     "node": ">=24",

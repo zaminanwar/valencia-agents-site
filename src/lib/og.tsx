@@ -3,6 +3,7 @@ import { join } from 'node:path'
 
 import { ImageResponse } from 'next/og'
 
+import { siteConfig } from '@/config/site'
 import { getSiteUrl } from '@/lib/site-url'
 import { readRootTokens, toHex } from '@/lib/theme-tokens'
 
@@ -101,7 +102,7 @@ function getFonts(): Promise<LoadedFont[]> {
 let markPromise: Promise<string> | null = null
 
 function getMark(): Promise<string> {
-  markPromise ??= readFile(join(process.cwd(), 'public', 'brand', 'valencia-mark.svg')).then(
+  markPromise ??= readFile(join(process.cwd(), 'public', 'brand', 'natomas-mark.svg')).then(
     (svg) => `data:image/svg+xml;base64,${svg.toString('base64')}`,
   )
   return markPromise
@@ -135,7 +136,7 @@ export async function createOgImage({ title, eyebrow, description, cta }: OgImag
       <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
         <img src={mark} width={40} height={40} alt="" />
         <span style={{ fontFamily: HEADING_FONT, fontWeight: 400, fontSize: 40 }}>
-          Valencia Agents
+          {siteConfig.name}
         </span>
       </div>
 

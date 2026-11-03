@@ -26,7 +26,7 @@ export const footerColumns: { title: string; links: NavLink[] }[] = [
   {
     title: 'Social',
     links: [
-      { label: 'hello@valencia-agents.example', href: 'mailto:hello@valencia-agents.example' },
+      { label: 'hello@natomas-ai.example', href: 'mailto:hello@natomas-ai.example' },
       { label: 'LinkedIn', href: 'https://www.linkedin.com/', external: true },
       { label: 'X / Twitter', href: 'https://x.com/', external: true },
     ],
@@ -35,6 +35,6 @@ export const footerColumns: { title: string; links: NavLink[] }[] = [
 
 export const footerNote = {
   tagline: 'AI consulting for engineering departments in the Sacramento area.',
-  line: '2026 Valencia Agents. All rights reserved.',
+  line: '2026 Natomas AI. All rights reserved.',
   legal: { label: 'Legal Notice', href: '/legal-notice' },
 }

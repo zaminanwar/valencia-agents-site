@@ -1,12 +1,14 @@
 import { expect, test } from '@playwright/test'
 
+import { siteConfig } from '@/config/site'
+
 for (const width of [320, 390]) {
   test(`the menu label stays clear of its close button at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 844 })
     await page.goto('/')
     await page.getByRole('button', { name: 'Open Menu' }).click()
     const menu = page.getByRole('dialog', { name: 'Menu', exact: true })
-    const label = await menu.getByText('Valencia Agents', { exact: true }).boundingBox()
+    const label = await menu.getByText(siteConfig.name, { exact: true }).boundingBox()
     const close = await menu.getByRole('button', { name: 'Close', exact: true }).boundingBox()
     expect(label).not.toBeNull()
     expect(close).not.toBeNull()

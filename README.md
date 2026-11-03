@@ -1,6 +1,6 @@
-# Valencia Agents site
+# Natomas AI site
 
-The website for Valencia Agents, an AI consultancy for engineering departments
+The website for Natomas AI, an AI consultancy for engineering departments
 in the Sacramento area.
 
 The design began as a replica of the Consultia template for Framer, a free
