@@ -8,7 +8,7 @@ export const contactContent = {
     'Clear priorities instead of vague ideas',
     'A practical roadmap for next steps',
   ],
-  action: { label: 'Book your strategy call', href: 'mailto:hello@valencia-agents.example' },
+  action: { label: 'Book your strategy call', href: 'mailto:hello@natomas-ai.example' },
   form: {
     name: { label: 'Name', placeholder: 'Jane Dupont' },
     email: { label: 'Email', placeholder: 'janedupont@example.com' },
@@ -16,7 +16,7 @@ export const contactContent = {
     company: { label: 'Company', placeholder: 'Dupont Engineering' },
     message: { label: 'Message', placeholder: 'Your message' },
     submit: 'Submit',
-    subject: 'A strategy call with Valencia Agents',
+    subject: 'A strategy call with Natomas AI',
     // The form has no backend: Submit opens the message as a draft in the visitor's mail app.
     note: 'Submit opens this message as a draft in your mail app. Nothing is stored here.',
   },

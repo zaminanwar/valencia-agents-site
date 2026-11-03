@@ -4,11 +4,11 @@ export const legalNotice = {
     {
       title: '1. Website operator',
       lines: [
-        'Business name: Valencia Agents',
+        'Business name: Natomas AI',
         'Legal status: Company',
         'Registered address: to be confirmed, Sacramento, CA',
         'VAT number: 123456789',
-        'Email: hello@valencia-agents.example',
+        'Email: hello@natomas-ai.example',
         'Phone: to be confirmed',
         'Publication director: to be confirmed',
       ],
@@ -25,7 +25,7 @@ export const legalNotice = {
     {
       title: '3. Intellectual property',
       lines: [
-        'All content on this website, including texts, images, branding, and design, is the property of Valencia Agents, unless otherwise stated.',
+        'All content on this website, including texts, images, branding, and design, is the property of Natomas AI, unless otherwise stated.',
         'Any unauthorized reproduction, distribution, or use is prohibited.',
       ],
     },
@@ -34,7 +34,7 @@ export const legalNotice = {
       lines: [
         'This website may collect personal data submitted voluntarily through contact forms or email, such as name and email address.',
         'This data is used only to respond to inquiries or provide requested services and is not sold or shared with third parties.',
-        'In accordance with the General Data Protection Regulation (GDPR), users may request access, correction, or deletion of their personal data by contacting: hello@valencia-agents.example',
+        'In accordance with the General Data Protection Regulation (GDPR), users may request access, correction, or deletion of their personal data by contacting: hello@natomas-ai.example',
       ],
     },
     {

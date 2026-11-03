@@ -8,7 +8,7 @@ export const aboutContent = {
       'Our consultants have delivered a collective seven figures in annual recurring savings within engineering departments in the Sacramento area across prior roles, including at Fortune 100 and Fortune 500 companies.',
       'We choose to operate locally and in person in the Sacramento area. A necessary part of any successful engagement is to put boots on the ground where the work is actually getting done.',
     ],
-    role: 'Valencia Agents, Sacramento',
+    role: 'Natomas AI, Sacramento',
   },
   // The proof strip under the card.
   facts: [
