@@ -1,5 +1,5 @@
 import { siteConfig } from '@/config/site'
-import { hero } from '@/content/hero'
+import { heroContent } from '@/content/hero'
 import { headerAction } from '@/content/navigation'
 import { OG_CONTENT_TYPE, OG_SIZE, createOgImage } from '@/lib/og'
 
@@ -9,8 +9,8 @@ export const contentType = OG_CONTENT_TYPE
 
 export default function Image() {
   return createOgImage({
-    title: hero.title,
-    eyebrow: hero.eyebrow,
+    title: heroContent.title,
+    eyebrow: heroContent.eyebrow,
     description: siteConfig.tagline,
     cta: headerAction.label,
   })

@@ -71,38 +71,11 @@ test('reduced motion stops animation without hiding meaningful content', async (
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
 })
 
-test('the theme shortcut is scoped to its focused control', async ({ page }) => {
+test('a question opens its answer and the plus turns into a cross', async ({ page }) => {
   await page.goto('/')
-  const theme = () => page.evaluate(() => document.documentElement.classList.contains('dark'))
-  const initial = await theme()
-  await page.keyboard.press('d')
-  expect(await theme()).toBe(initial)
-  await page.getByRole('button', { name: 'Toggle Theme' }).focus()
-  await page.keyboard.press('d')
-  await expect.poll(theme).toBe(!initial)
-})
-
-test('the browser theme color follows a manual theme change', async ({ page }) => {
-  await page.goto('/')
-  const colors = () =>
-    page
-      .locator('meta[name="theme-color"]')
-      .evaluateAll((nodes) => nodes.map((node) => node.getAttribute('content')))
-  const initial = await colors()
-  expect(initial.length).toBeGreaterThan(0)
-  await page.getByRole('button', { name: 'Toggle Theme' }).click()
-  await expect.poll(colors).not.toEqual(initial)
-})
-
-test('an expanded FAQ can be shared and restored with Back', async ({ page }) => {
-  await page.goto('/')
-  const questions = page.locator('#faq').getByRole('button')
-  await questions.nth(1).click()
-  const sharedUrl = page.url()
-  expect(new URL(sharedUrl).hash).toContain('#faq-')
-  await page.reload()
-  await expect(questions.nth(1)).toHaveAttribute('aria-expanded', 'true')
-  await questions.nth(2).click()
-  await page.goBack()
-  await expect(questions.nth(1)).toHaveAttribute('aria-expanded', 'true')
+  const first = page.locator('#faq details').first()
+  await expect(first).not.toHaveAttribute('open')
+  await first.locator('summary').click()
+  await expect(first).toHaveAttribute('open', '')
+  await expect(first.locator('p')).toBeVisible()
 })

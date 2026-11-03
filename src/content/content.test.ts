@@ -1,21 +1,16 @@
 import { describe, expect, it } from 'vitest'
 
-import { about } from '@/content/about'
-import { closing } from '@/content/closing'
-import { contact } from '@/content/contact'
+import { aboutContent } from '@/content/about'
+import { benefitsContent } from '@/content/benefits'
+import { contactContent } from '@/content/contact'
 import { faq } from '@/content/faq'
-import { fit } from '@/content/fit'
-import { gap } from '@/content/gap'
-import { hero } from '@/content/hero'
-import { howWeWork } from '@/content/how-we-work'
-import { insights } from '@/content/insights'
-import { method } from '@/content/method'
-import { footerColumns, footerNote, headerAction, mobileNav } from '@/content/navigation'
-import { newFirm } from '@/content/new-firm'
+import { heroContent } from '@/content/hero'
+import { legalNotice } from '@/content/legal-notice'
+import { footerColumns, footerNote, headerAction, headerNav, mobileNav } from '@/content/navigation'
 import { notFound } from '@/content/not-found'
-import { processAgent } from '@/content/process-agent'
-import { refusals } from '@/content/refusals'
-import { services } from '@/content/services'
+import { problemContent } from '@/content/problem'
+import { processContent } from '@/content/process'
+import { servicesContent } from '@/content/services'
 
 // Built from code points, so the rule against dashes holds in this file too.
 const DASHES = new RegExp(`[${String.fromCharCode(0x2013, 0x2014)}]`)
@@ -29,98 +24,33 @@ function strings(value: unknown): string[] {
 }
 
 const sections = [
-  hero,
-  gap,
-  processAgent,
-  fit,
-  method,
-  refusals,
-  newFirm,
+  heroContent,
+  problemContent,
+  benefitsContent,
+  servicesContent,
+  processContent,
+  aboutContent,
   faq,
-  closing,
+  contactContent,
+  legalNotice,
   notFound,
-  howWeWork,
-  services,
-  about,
-  contact,
-  insights,
 ]
 
-// Subpage sections live one level down, so their titles and eyebrows are listed by hand.
-const subpageLabels = [
-  howWeWork.hero.eyebrow,
-  howWeWork.problem.title,
-  howWeWork.problem.eyebrow,
-  howWeWork.principle.title,
-  howWeWork.principle.eyebrow,
-  ...howWeWork.principle.owners.map((owner) => owner.title),
-  howWeWork.stages.title,
-  howWeWork.stages.eyebrow,
-  ...howWeWork.stages.items.map((stage) => stage.name),
-  howWeWork.guarantees.title,
-  howWeWork.guarantees.eyebrow,
-  ...howWeWork.guarantees.items.map((item) => item.title),
-  howWeWork.handover.title,
-  howWeWork.handover.eyebrow,
-  howWeWork.commercial.title,
-  howWeWork.commercial.eyebrow,
-  ...howWeWork.commercial.offers.map((offer) => offer.title),
-  howWeWork.ontology.title,
-  howWeWork.ontology.eyebrow,
-  services.hero.eyebrow,
-  services.discovery.title,
-  services.discovery.eyebrow,
-  ...services.discovery.outputs.map((output) => output.title),
-  services.implementation.title,
-  services.implementation.eyebrow,
-  services.includes.title,
-  services.includes.eyebrow,
-  ...services.includes.items.map((item) => item.title),
-  services.refusals.title,
-  services.refusals.eyebrow,
-  about.hero.eyebrow,
-  about.whatWeDo.title,
-  about.whatWeDo.eyebrow,
-  about.notList.title,
-  about.notList.eyebrow,
-  ...about.notList.items.map((item) => item.title),
-  about.honestly.title,
-  about.honestly.eyebrow,
-  about.honestly.primaryAction.label,
-  about.honestly.secondaryAction.label,
-  contact.hero.eyebrow,
-  contact.form.title,
-  contact.form.eyebrow,
-  insights.hero.eyebrow,
-  insights.willBe.title,
-  insights.willBe.eyebrow,
-  insights.willBe.primaryAction.label,
-  insights.notLive.title,
-  insights.notLive.eyebrow,
-  insights.notLive.primaryAction.label,
-]
-
+// Labels read the way the template writes them: a capital first letter, then sentence case.
 const labels = [
   ...sections.flatMap((section) => ('title' in section ? [section.title] : [])),
   ...sections.flatMap((section) => ('eyebrow' in section ? [section.eyebrow] : [])),
   headerAction.label,
   notFound.action.label,
-  hero.primaryAction.label,
-  hero.secondaryAction.label,
-  ...hero.facts.map((fact) => fact.term),
-  closing.primaryAction.label,
-  closing.secondaryAction.label,
-  method.action.label,
-  refusals.action.label,
-  newFirm.action.label,
-  faq.contact.action.label,
-  ...processAgent.items.map((item) => item.title),
-  ...fit.traits.map((trait) => trait.title),
-  fit.example.label,
+  heroContent.primaryAction.label,
+  heroContent.secondaryAction.label,
+  servicesContent.action.label,
+  processContent.action.label,
+  contactContent.action.label,
+  contactContent.form.submit,
   ...mobileNav.map((link) => link.label),
-  ...footerColumns.flatMap((column) => [column.title, ...column.links.map((link) => link.label)]),
-  ...subpageLabels,
-].filter((label) => label !== hero.title)
+  ...footerColumns.map((column) => column.title),
+]
 
 describe('content', () => {
   it('never uses an em dash or an en dash', () => {
@@ -134,9 +64,13 @@ describe('content', () => {
     expect(offenders).toEqual([])
   })
 
-  it('writes every label in Title Case', () => {
-    const offenders = labels.filter((label) => label.split(' ').some((word) => /^[a-z]/.test(word)))
+  it('starts every label with a capital letter', () => {
+    const offenders = labels.filter((label) => !/^[A-Z]/.test(label))
     expect(offenders).toEqual([])
+  })
+
+  it('writes the hero headline as one sentence', () => {
+    expect(heroContent.title).toMatch(/^[A-Z][^.]*\.$/)
   })
 
   // Questions read as sentences, the way a visitor would ask them.
@@ -150,19 +84,12 @@ describe('content', () => {
     expect(offenders).toEqual([])
   })
 
-  it('writes the hero headline as one sentence', () => {
-    expect(hero.title).toMatch(/^[A-Z][^.]*\.$/)
-  })
-
-  it('summarises the same seven stages the method page sets out', () => {
-    expect(method.stages.map((stage) => stage.name)).toEqual(
-      howWeWork.stages.items.map((stage) => stage.name),
-    )
-    expect(refusals.items).toEqual(howWeWork.guarantees.items.map((item) => item.title))
-  })
-
-  it('keeps FAQ questions unique, because each one is its accordion value', () => {
+  it('keeps FAQ questions unique, because each one names its disclosure', () => {
     const questions = faq.items.map((item) => item.question)
     expect(new Set(questions).size).toBe(questions.length)
+  })
+
+  it('points every header link at a section or a page', () => {
+    for (const link of headerNav) expect(link.href).toMatch(/^\/(#[a-z-]+)?$/)
   })
 })

@@ -1,46 +1,34 @@
-import { ButtonLink } from '@/components/button-link'
-import { FaqAccordion } from '@/components/faq-accordion'
+import { PlusIcon } from 'lucide-react'
+
 import { JsonLd } from '@/components/json-ld'
 import { Section, SectionHeading } from '@/components/section'
-import { AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { faq } from '@/content/faq'
-import { withInlineCode } from '@/lib/inline-code'
 import { faqPageSchema } from '@/lib/structured-data'
 
+// Native disclosures, so every answer is in the HTML and opens without JavaScript.
 export function Faq() {
-  const items = faq.items.map((item) => ({
-    ...item,
-    id: `faq-${item.question
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/-$/, '')}`,
-  }))
-
   return (
-    <Section id="faq" number="07" label={faq.eyebrow}>
+    <Section id="faq">
       {/* The FAQPage markup lives with the questions it describes, so dropping the section drops both. */}
       <JsonLd data={faqPageSchema(faq.items)} />
-      <SectionHeading sectionId="faq" title={faq.title} description={faq.description} />
-
-      <div className="max-w-3xl reveal">
-        {/* hiddenUntilFound keeps closed answers in the HTML, for crawlers and find-in-page alike. */}
-        <FaqAccordion ids={items.map((item) => item.id)}>
-          {items.map((item) => (
-            <AccordionItem key={item.id} id={item.id} value={item.id}>
-              <AccordionTrigger>{item.question}</AccordionTrigger>
-              <AccordionContent>
-                <p className="text-pretty text-muted-foreground">{withInlineCode(item.answer)}</p>
-              </AccordionContent>
-            </AccordionItem>
+      <div className="flex flex-col items-center gap-12">
+        <SectionHeading sectionId="faq" align="center" eyebrow={faq.eyebrow} title={faq.title} />
+        <div className="flex w-full max-w-xl flex-col gap-3">
+          {faq.items.map((item) => (
+            <details key={item.question} className="group reveal rounded-xl bg-muted">
+              <summary className="flex cursor-pointer items-center justify-between gap-4 rounded-xl px-4 py-3 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none">
+                <h3 className="text-base font-normal tracking-tight">{item.question}</h3>
+                <PlusIcon
+                  aria-hidden="true"
+                  className="size-5 shrink-0 transition-transform group-open:rotate-45"
+                />
+              </summary>
+              <p className="px-4 pb-4 text-base tracking-tight text-pretty text-muted-foreground">
+                {item.answer}
+              </p>
+            </details>
           ))}
-        </FaqAccordion>
-      </div>
-
-      <div className="flex reveal flex-wrap items-center gap-4">
-        <p className="text-sm font-medium">{faq.contact.title}</p>
-        <ButtonLink href={faq.contact.action.href} variant="outline">
-          {faq.contact.action.label}
-        </ButtonLink>
+        </div>
       </div>
     </Section>
   )

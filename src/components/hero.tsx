@@ -1,45 +1,70 @@
-import { ButtonLink } from '@/components/button-link'
-import { SectionLabel } from '@/components/section'
-import { hero } from '@/content/hero'
+import Image from 'next/image'
+
+import { CtaLink } from '@/components/cta-link'
+import { Eyebrow } from '@/components/section'
+import { heroContent } from '@/content/hero'
+import { cn } from '@/lib/utils'
+
+// One chip sits at the top right of the photo, the other at the bottom left.
+const CHIP_PLACEMENTS = ['top-5 right-5', 'bottom-5 left-5']
 
 export function Hero() {
   return (
-    <section aria-labelledby="hero-title" className="px-4 sm:px-6">
-      <div className="mx-auto flex max-w-6xl flex-col gap-10 pt-16 pb-14 sm:pt-24 sm:pb-20 lg:pt-32 lg:pb-24">
-        <div className="flex flex-col gap-6">
+    <section aria-labelledby="hero-title" className="px-6 pt-8 pb-20 sm:pt-16 sm:pb-24 lg:pt-20">
+      <div className="mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
           <div className="animate-rise-fade motion-reduce:animate-none">
-            <SectionLabel>{hero.eyebrow}</SectionLabel>
+            <Eyebrow>{heroContent.eyebrow}</Eyebrow>
           </div>
           <h1
             id="hero-title"
-            className="max-w-4xl animate-rise font-heading text-5xl leading-none font-medium tracking-tight text-balance delay-75 motion-reduce:animate-none sm:text-6xl lg:text-7xl"
+            className="animate-rise font-heading text-4xl leading-10 font-medium tracking-tighter text-pretty delay-75 motion-reduce:animate-none sm:text-6xl sm:leading-16"
           >
-            {hero.title}
+            {heroContent.title}
           </h1>
-          <p className="max-w-2xl animate-rise-fade text-lg text-pretty text-muted-foreground delay-150 motion-reduce:animate-none sm:text-xl">
-            {hero.description}
+          <p className="max-w-lg animate-rise-fade text-base text-pretty text-muted-foreground delay-150 motion-reduce:animate-none">
+            {heroContent.description}
           </p>
-          <div className="flex animate-rise-fade flex-wrap items-center gap-3 delay-200 motion-reduce:animate-none">
-            <ButtonLink href={hero.primaryAction.href} size="lg">
-              {hero.primaryAction.label}
-            </ButtonLink>
-            <ButtonLink href={hero.secondaryAction.href} variant="outline" size="lg">
-              {hero.secondaryAction.label}
-            </ButtonLink>
+          <div className="flex w-full animate-rise-fade flex-col items-center gap-4 delay-200 motion-reduce:animate-none sm:w-auto sm:flex-row sm:gap-8">
+            <CtaLink href={heroContent.primaryAction.href} className="w-full sm:w-auto">
+              {heroContent.primaryAction.label}
+            </CtaLink>
+            <CtaLink href={heroContent.secondaryAction.href} variant="text">
+              {heroContent.secondaryAction.label}
+            </CtaLink>
           </div>
         </div>
 
-        {/* The terms of an engagement, under the headline like a masthead. */}
-        <dl className="grid animate-rise-fade grid-cols-2 gap-x-8 gap-y-6 border-t pt-6 delay-300 motion-reduce:animate-none lg:grid-cols-4">
-          {hero.facts.map((fact) => (
-            <div key={fact.term} className="flex flex-col gap-1">
-              <dt className="text-xs font-medium tracking-widest text-muted-foreground uppercase">
-                {fact.term}
-              </dt>
-              <dd className="font-heading text-xl font-medium sm:text-2xl">{fact.detail}</dd>
+        <div className="relative mx-auto w-full max-w-lg animate-rise-fade delay-300 motion-reduce:animate-none lg:max-w-none">
+          <Image
+            src={heroContent.image.src}
+            alt={heroContent.image.alt}
+            priority
+            sizes="(min-width: 1024px) 504px, 100vw"
+            className="aspect-square w-full rounded-3xl border-4 border-muted object-cover"
+          />
+          {heroContent.chips.map((chip, index) => (
+            <div
+              key={chip.title}
+              aria-hidden="true"
+              data-nosnippet
+              className={cn(
+                'absolute flex items-center gap-3 rounded-xl bg-foreground/60 p-2 pr-4 text-primary-foreground backdrop-blur-md',
+                CHIP_PLACEMENTS[index],
+              )}
+            >
+              <span className="grid size-10 place-items-center rounded-lg bg-primary-foreground/25">
+                <chip.icon className="size-5" />
+              </span>
+              <span className="flex flex-col">
+                <span className="text-base tracking-tight">{chip.title}</span>
+                <span className="text-sm tracking-tight text-primary-foreground/80">
+                  {chip.detail}
+                </span>
+              </span>
             </div>
           ))}
-        </dl>
+        </div>
       </div>
     </section>
   )

@@ -1,39 +1,52 @@
-import { withInlineCode } from '@/lib/inline-code'
 import { cn } from '@/lib/utils'
 
 function titleIdFor(sectionId: string) {
   return `${sectionId}-title`
 }
 
-// A section opens with a rule and sets its label in the margin, with the content beside it from a laptop up.
+// Every section shares one rhythm and is labelled by its h2; a muted section sits on the dotted paper.
 export function Section({
   id,
-  number,
-  label,
+  tone = 'default',
   className,
   children,
 }: {
   id: string
-  number?: string
-  label: string
+  tone?: 'default' | 'muted'
   className?: string
   children: React.ReactNode
 }) {
   return (
-    <section id={id} aria-labelledby={titleIdFor(id)} className={cn('px-4 sm:px-6', className)}>
-      <div className="mx-auto grid max-w-6xl gap-6 border-t py-14 sm:py-20 lg:grid-cols-12 lg:gap-10 lg:py-24">
-        <SectionLabel number={number}>{label}</SectionLabel>
-        <div className="flex flex-col gap-10 lg:col-span-9">{children}</div>
-      </div>
+    <section
+      id={id}
+      aria-labelledby={titleIdFor(id)}
+      className={cn(
+        'px-6 py-20 sm:py-24 lg:py-28',
+        tone === 'muted' && 'bg-muted paper-dots',
+        className,
+      )}
+    >
+      <div className="mx-auto w-full max-w-6xl">{children}</div>
     </section>
   )
 }
 
-export function SectionLabel({ number, children }: { number?: string; children: string }) {
+// The small label above a heading, a pill on the page's other tint.
+export function Eyebrow({
+  tone = 'default',
+  children,
+}: {
+  tone?: 'default' | 'muted'
+  children: string
+}) {
   return (
-    <p className="flex items-baseline gap-3 text-xs font-medium tracking-widest text-muted-foreground uppercase lg:col-span-3">
-      {number ? <span className="font-mono text-foreground">{number}</span> : null}
-      <span>{children}</span>
+    <p
+      className={cn(
+        'inline-flex w-fit rounded-md px-2 py-1 text-sm tracking-tight',
+        tone === 'muted' ? 'bg-background' : 'bg-muted',
+      )}
+    >
+      {children}
     </p>
   )
 }
@@ -45,13 +58,13 @@ export function SectionTitle({
 }: {
   sectionId: string
   className?: string
-  children: React.ReactNode
+  children: string
 }) {
   return (
     <h2
       id={titleIdFor(sectionId)}
       className={cn(
-        'max-w-3xl font-heading text-3xl leading-tight font-medium tracking-tight text-balance sm:text-4xl',
+        'font-heading text-4xl leading-10 font-medium tracking-tighter text-balance',
         className,
       )}
     >
@@ -61,63 +74,35 @@ export function SectionTitle({
 }
 
 export function SectionDescription({ children }: { children: string }) {
-  return (
-    <p className="max-w-2xl text-lg text-pretty text-muted-foreground">
-      {withInlineCode(children)}
-    </p>
-  )
+  return <p className="text-pretty text-muted-foreground">{children}</p>
 }
 
-// The title with its description, which most sections open with.
+// Eyebrow, title and description together, centred or at the start.
 export function SectionHeading({
   sectionId,
+  eyebrow,
   title,
   description,
+  align = 'start',
+  tone = 'default',
 }: {
   sectionId: string
+  eyebrow: string
   title: string
   description?: string
+  align?: 'start' | 'center'
+  tone?: 'default' | 'muted'
 }) {
   return (
-    <div className="flex reveal flex-col gap-4">
+    <div
+      className={cn(
+        'flex reveal flex-col gap-4',
+        align === 'center' ? 'mx-auto max-w-xl items-center text-center' : 'max-w-lg items-start',
+      )}
+    >
+      <Eyebrow tone={tone}>{eyebrow}</Eyebrow>
       <SectionTitle sectionId={sectionId}>{title}</SectionTitle>
       {description ? <SectionDescription>{description}</SectionDescription> : null}
     </div>
-  )
-}
-
-// Running copy under a heading: paragraphs at a reading measure.
-export function Prose({ paragraphs }: { paragraphs: readonly string[] }) {
-  return (
-    <div className="flex max-w-2xl flex-col gap-5 text-pretty text-muted-foreground sm:text-lg">
-      {paragraphs.map((paragraph) => (
-        <p key={paragraph}>{withInlineCode(paragraph)}</p>
-      ))}
-    </div>
-  )
-}
-
-// Titled points set in columns, each under its own rule, in place of cards.
-export function RuledList({
-  items,
-  columns = 2,
-}: {
-  items: readonly { title: string; body: string }[]
-  columns?: 2 | 3
-}) {
-  return (
-    <ul
-      className={cn(
-        'grid gap-x-8 gap-y-8 sm:grid-cols-2',
-        columns === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-2',
-      )}
-    >
-      {items.map((item) => (
-        <li key={item.title} className="flex reveal flex-col gap-2 border-t pt-4">
-          <h3 className="font-medium">{item.title}</h3>
-          <p className="text-sm text-pretty text-muted-foreground">{withInlineCode(item.body)}</p>
-        </li>
-      ))}
-    </ul>
   )
 }
