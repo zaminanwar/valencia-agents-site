@@ -1,6 +1,7 @@
 import { ButtonLink } from '@/components/button-link'
 import { PageHero } from '@/components/page-hero'
 import { PageSection } from '@/components/page-section'
+import { Prose, RuledList } from '@/components/section'
 import { about } from '@/content/about'
 import { createMetadata } from '@/lib/metadata'
 
@@ -21,40 +22,36 @@ export default function About() {
         ledes={[about.hero.lede]}
       />
 
-      <PageSection id="what-we-do" eyebrow={about.whatWeDo.eyebrow} title={about.whatWeDo.title}>
-        <div className="flex max-w-2xl flex-col gap-4">
-          {about.whatWeDo.paragraphs.map((paragraph) => (
-            <p key={paragraph} className="text-pretty text-muted-foreground sm:text-lg">
-              {paragraph}
-            </p>
-          ))}
-        </div>
+      <PageSection
+        id="what-we-do"
+        number="01"
+        eyebrow={about.whatWeDo.eyebrow}
+        title={about.whatWeDo.title}
+      >
+        <Prose paragraphs={about.whatWeDo.paragraphs} />
       </PageSection>
 
-      <PageSection id="what-we-are-not" eyebrow={about.notList.eyebrow} title={about.notList.title}>
-        <ul className="grid gap-5 sm:grid-cols-2">
-          {about.notList.items.map((item) => (
-            <li key={item.title} className="flex flex-col gap-1.5 rounded-2xl border bg-card p-6">
-              <h3 className="font-heading font-semibold">{item.title}</h3>
-              <p className="text-sm text-pretty text-muted-foreground">{item.body}</p>
-            </li>
-          ))}
-        </ul>
+      <PageSection
+        id="what-we-are-not"
+        number="02"
+        eyebrow={about.notList.eyebrow}
+        title={about.notList.title}
+      >
+        <RuledList items={about.notList.items} />
       </PageSection>
 
-      <PageSection id="honestly" eyebrow={about.honestly.eyebrow} title={about.honestly.title}>
-        <div className="flex max-w-2xl flex-col gap-4">
-          {about.honestly.paragraphs.map((paragraph) => (
-            <p key={paragraph} className="text-pretty text-muted-foreground sm:text-lg">
-              {paragraph}
-            </p>
-          ))}
-        </div>
+      <PageSection
+        id="honestly"
+        number="03"
+        eyebrow={about.honestly.eyebrow}
+        title={about.honestly.title}
+      >
+        <Prose paragraphs={about.honestly.paragraphs} />
         <div className="flex flex-wrap gap-3">
           <ButtonLink href={about.honestly.primaryAction.href} size="lg">
             {about.honestly.primaryAction.label}
           </ButtonLink>
-          <ButtonLink href={about.honestly.secondaryAction.href} variant="secondary" size="lg">
+          <ButtonLink href={about.honestly.secondaryAction.href} variant="outline" size="lg">
             {about.honestly.secondaryAction.label}
           </ButtonLink>
         </div>

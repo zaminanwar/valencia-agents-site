@@ -1,63 +1,45 @@
-import { ZapIcon } from 'lucide-react'
-
 import { ButtonLink } from '@/components/button-link'
-import { Eyebrow } from '@/components/eyebrow'
+import { SectionLabel } from '@/components/section'
 import { hero } from '@/content/hero'
-import { withInlineCode } from '@/lib/inline-code'
-import { cn } from '@/lib/utils'
-
-// The eyebrow bolt, filled.
-function FilledZap({ className }: { className?: string }) {
-  return <ZapIcon className={cn(className, 'fill-current')} />
-}
 
 export function Hero() {
-  const [before, after] = hero.title.split(hero.titleEmphasis)
-  // On a large screen the last word before the emphasis moves down with it; narrower screens balance their own lines.
-  const cut = before.trimEnd().lastIndexOf(' ')
-  // Its first two words stay together, so a narrow screen never ends a line on a lone chip.
-  const emphasis = hero.titleEmphasis.replace(' ', ' ')
-
   return (
-    <section
-      aria-labelledby="hero-title"
-      className="relative isolate px-4 pt-20 pb-12 sm:px-6 sm:pt-28 sm:pb-16"
-    >
-      {/* Taller than the hero on purpose, so it fades out instead of stopping at a hard edge. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 mx-auto h-176 max-w-5xl bg-glow"
-      />
+    <section aria-labelledby="hero-title" className="px-4 sm:px-6">
+      <div className="mx-auto flex max-w-6xl flex-col gap-10 pt-16 pb-14 sm:pt-24 sm:pb-20 lg:pt-32 lg:pb-24">
+        <div className="flex flex-col gap-6">
+          <div className="animate-rise-fade motion-reduce:animate-none">
+            <SectionLabel>{hero.eyebrow}</SectionLabel>
+          </div>
+          <h1
+            id="hero-title"
+            className="max-w-4xl animate-rise font-heading text-5xl leading-none font-medium tracking-tight text-balance delay-75 motion-reduce:animate-none sm:text-6xl lg:text-7xl"
+          >
+            {hero.title}
+          </h1>
+          <p className="max-w-2xl animate-rise-fade text-lg text-pretty text-muted-foreground delay-150 motion-reduce:animate-none sm:text-xl">
+            {hero.description}
+          </p>
+          <div className="flex animate-rise-fade flex-wrap items-center gap-3 delay-200 motion-reduce:animate-none">
+            <ButtonLink href={hero.primaryAction.href} size="lg">
+              {hero.primaryAction.label}
+            </ButtonLink>
+            <ButtonLink href={hero.secondaryAction.href} variant="outline" size="lg">
+              {hero.secondaryAction.label}
+            </ButtonLink>
+          </div>
+        </div>
 
-      <div className="relative mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
-        <div className="animate-rise-fade motion-reduce:animate-none">
-          <Eyebrow icon={FilledZap} {...hero.eyebrow} />
-        </div>
-        {/* No fade on the headline: it is the largest paint, and a transparent element is skipped for it. */}
-        <h1
-          id="hero-title"
-          className="animate-rise font-heading text-4xl font-bold tracking-tighter text-balance delay-75 motion-reduce:animate-none sm:text-5xl"
-        >
-          {before.slice(0, cut)}
-          <br className="max-lg:hidden" />
-          {before.slice(cut)}
-          {/* A chip like the inline code on the page, in a lighter weight than the headline. */}
-          <em className="rounded-xl bg-accent box-decoration-clone px-3 font-light text-accent-foreground not-italic">
-            {emphasis}
-          </em>
-          {after}
-        </h1>
-        <p className="max-w-2xl animate-rise-fade text-lg text-pretty text-muted-foreground delay-150 motion-reduce:animate-none">
-          {withInlineCode(hero.description)}
-        </p>
-        <div className="mt-2 flex max-w-full animate-rise-fade flex-wrap items-center justify-center gap-3 delay-200 motion-reduce:animate-none">
-          <ButtonLink href={hero.primaryAction.href} variant="outline" size="lg">
-            {hero.primaryAction.label}
-          </ButtonLink>
-          <ButtonLink href={hero.secondaryAction.href} variant="secondary" size="lg">
-            {hero.secondaryAction.label}
-          </ButtonLink>
-        </div>
+        {/* The terms of an engagement, under the headline like a masthead. */}
+        <dl className="grid animate-rise-fade grid-cols-2 gap-x-8 gap-y-6 border-t pt-6 delay-300 motion-reduce:animate-none lg:grid-cols-4">
+          {hero.facts.map((fact) => (
+            <div key={fact.term} className="flex flex-col gap-1">
+              <dt className="text-xs font-medium tracking-widest text-muted-foreground uppercase">
+                {fact.term}
+              </dt>
+              <dd className="font-heading text-xl font-medium sm:text-2xl">{fact.detail}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   )

@@ -5,7 +5,7 @@ export const siteConfig = {
   description:
     'Valencia Agents builds agentic workflows that run your back-office processes in your own estate, under human approval, then hands them over to you.',
   // The share image's line under the headline.
-  tagline: 'Processes that run themselves, decide safely, and can be checked.',
+  tagline: 'Built in your estate, approved by your people, handed over to you.',
   keywords: [
     'Valencia Agents',
     'agentic workflows',
@@ -17,6 +17,7 @@ export const siteConfig = {
   // Bump when the page copy changes; the sitemap reports it as lastmod.
   lastUpdated: '2026-11-03',
   author: { name: 'Valencia Agents' },
+  email: 'hello@valencia-agents.example',
   links: {
     email: 'mailto:hello@valencia-agents.example',
     home: '/',

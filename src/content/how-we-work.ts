@@ -1,21 +1,11 @@
-import {
-  BanknoteIcon,
-  KeyRoundIcon,
-  ListChecksIcon,
-  NetworkIcon,
-  SearchIcon,
-  ShieldCheckIcon,
-  ShieldIcon,
-} from 'lucide-react'
-
 export const howWeWork = {
   hero: {
-    eyebrow: { icon: ListChecksIcon, lead: 'The', emphasis: 'Method' },
+    eyebrow: 'The Method',
     title: 'How we work.',
     lede: 'One process at a time. Seven stages. Each stage ends with something you can check.',
   },
   problem: {
-    eyebrow: { icon: SearchIcon, lead: '01', emphasis: 'The Problem' },
+    eyebrow: 'The Problem',
     title: 'The Gap Is Not The Model',
     paragraphs: [
       'AI capability is no longer the hard part. The models are good. What is hard is turning a real business process into something an agent can run safely.',
@@ -25,7 +15,7 @@ export const howWeWork = {
     ],
   },
   principle: {
-    eyebrow: { icon: ShieldCheckIcon, lead: '02', emphasis: 'The Principle' },
+    eyebrow: 'The Principle',
     title: 'The Model Does Not Run The Process',
     description:
       'A deterministic control plane does. The model works inside it. A human owns the consequences.',
@@ -49,7 +39,7 @@ export const howWeWork = {
     ],
   },
   stages: {
-    eyebrow: { icon: ListChecksIcon, lead: '03', emphasis: 'The Seven Stages' },
+    eyebrow: 'The Seven Stages',
     title: 'Each Stage Ends With Something You Can Check',
     items: [
       {
@@ -97,7 +87,7 @@ export const howWeWork = {
     ],
   },
   guarantees: {
-    eyebrow: { icon: ShieldIcon, lead: '04', emphasis: 'Guarantees And Refusals' },
+    eyebrow: 'Guarantees And Refusals',
     title: 'A Firm That Never Says No Is A Vendor, Not A Consultant',
     description:
       'These are the lines we hold, and they are the reason to believe the rest of this page.',
@@ -129,7 +119,7 @@ export const howWeWork = {
     ],
   },
   handover: {
-    eyebrow: { icon: KeyRoundIcon, lead: '05', emphasis: 'The Handover Promise' },
+    eyebrow: 'The Handover Promise',
     title: 'When We Hand Over, You Keep Everything',
     description: 'Not access to it. Ownership of it.',
     items: [
@@ -147,7 +137,7 @@ export const howWeWork = {
       'On exit, we remove our access. You keep the system. Revocable access is not a handover.',
   },
   commercial: {
-    eyebrow: { icon: BanknoteIcon, lead: '06', emphasis: 'The Commercial Shape' },
+    eyebrow: 'The Commercial Shape',
     title: 'Fixed-Price Throughout',
     description: 'Set at scoping, once the process is mapped.',
     offers: [
@@ -171,7 +161,7 @@ export const howWeWork = {
     ],
   },
   ontology: {
-    eyebrow: { icon: NetworkIcon, lead: '07', emphasis: 'The Ontology Layer' },
+    eyebrow: 'The Ontology Layer',
     title: 'Your Business, Modelled Once',
     description: 'A spine later engagements reuse.',
     paragraphs: [

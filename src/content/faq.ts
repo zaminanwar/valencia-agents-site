@@ -1,10 +1,8 @@
-import { MessageCircleQuestionMarkIcon } from 'lucide-react'
-
 export type Faq = { question: string; answer: string }
 
 // Plain strings, so the section and its FAQPage JSON-LD read one source. Backticks render as inline code.
 export const faq = {
-  eyebrow: { icon: MessageCircleQuestionMarkIcon, lead: 'Questions', emphasis: 'And Answers' },
+  eyebrow: 'Questions',
   title: 'Questions & Answers',
   description: 'What a process agent is, what you get, what it costs, and what we need from you.',
   contact: {

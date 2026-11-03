@@ -1,13 +1,11 @@
-import { BookOpenIcon, MailIcon } from 'lucide-react'
-
 export const insights = {
   hero: {
-    eyebrow: { icon: BookOpenIcon, lead: 'Notes From', emphasis: 'The Work' },
+    eyebrow: 'Notes From The Work',
     title: 'Notes from the work.',
     lede: 'Notes on the method, and on what real engagements teach once there are real engagements to learn from.',
   },
   willBe: {
-    eyebrow: { icon: BookOpenIcon, lead: '01', emphasis: 'What This Will Be' },
+    eyebrow: 'What This Will Be',
     title: 'Short, Practical Notes, Written From The Work',
     paragraphs: [
       'How a process was mapped, where an evaluation caught something a demo would have missed, what a handover actually required. Written from the work, not from opinions about the industry.',
@@ -16,7 +14,7 @@ export const insights = {
     primaryAction: { label: 'Read The Method', href: '/how-we-work' },
   },
   notLive: {
-    eyebrow: { icon: MailIcon, lead: '02', emphasis: 'The Newsletter Is Not Live Yet' },
+    eyebrow: 'The Newsletter Is Not Live Yet',
     title: 'Plainly Stated, There Is No Signup Form Here',
     note: 'There is no signup form on this page, because there is no newsletter service behind it yet. A form that collected your address and dropped it nowhere would be worse than no form at all.',
     paragraphs: [

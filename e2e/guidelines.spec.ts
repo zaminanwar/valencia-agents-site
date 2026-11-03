@@ -59,33 +59,6 @@ test('controls only transition explicit properties', async ({ page }) => {
   expect(await broad()).toEqual([])
 })
 
-test('a keyboard control pauses and resumes every decorative loop', async ({ page }) => {
-  await page.goto('/')
-  const toggle = page.getByRole('button', { name: 'Pause Animations' })
-  await toggle.focus()
-  await page.keyboard.press('Enter')
-  await expect(page.getByRole('button', { name: 'Resume Animations' })).toHaveAttribute(
-    'aria-pressed',
-    'true',
-  )
-
-  const runningLoops = () =>
-    page.evaluate(
-      () =>
-        document
-          .getAnimations()
-          .filter(
-            (animation) =>
-              animation.effect?.getTiming().iterations === Number.POSITIVE_INFINITY &&
-              animation.playState === 'running',
-          ).length,
-    )
-  await expect.poll(runningLoops).toBe(0)
-  await page.keyboard.press('Enter')
-  await expect(toggle).toHaveAttribute('aria-pressed', 'false')
-  await expect.poll(runningLoops).toBeGreaterThan(0)
-})
-
 test('reduced motion stops animation without hiding meaningful content', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/')
@@ -96,7 +69,6 @@ test('reduced motion stops animation without hiding meaningful content', async (
     ),
   ).toBe(0)
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
-  await expect(page.getByRole('button', { name: 'Pause Animations' })).toBeHidden()
 })
 
 test('the theme shortcut is scoped to its focused control', async ({ page }) => {

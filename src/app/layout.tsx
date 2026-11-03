@@ -2,7 +2,7 @@ import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 
 import type { Viewport } from 'next'
-import { Geist_Mono, Oxanium } from 'next/font/google'
+import { IBM_Plex_Mono, IBM_Plex_Sans, Newsreader } from 'next/font/google'
 
 import './globals.css'
 import { JsonLd } from '@/components/json-ld'
@@ -14,12 +14,16 @@ import { siteSchemas } from '@/lib/structured-data'
 import { readRootTokens, toHex } from '@/lib/theme-tokens'
 import { cn } from '@/lib/utils'
 
-const oxanium = Oxanium({ subsets: ['latin'], variable: '--font-sans' })
+// The serif carries the headings and the wordmark; the sans carries everything else.
+const serif = Newsreader({ subsets: ['latin'], axes: ['opsz'], variable: '--font-serif' })
 
-const fontMono = Geist_Mono({
+const sans = IBM_Plex_Sans({
   subsets: ['latin'],
-  variable: '--font-mono',
+  weight: ['400', '500', '600'],
+  variable: '--font-sans',
 })
+
+const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-mono' })
 
 // Site-wide defaults with no canonical, so a page that forgets its own metadata never claims to be the home page.
 export const metadata = createMetadata({})
@@ -50,7 +54,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn('antialiased', fontMono.variable, 'font-sans', oxanium.variable)}
+      className={cn('antialiased', 'font-sans', serif.variable, sans.variable, mono.variable)}
     >
       <body>
         <JsonLd data={siteSchemas()} />

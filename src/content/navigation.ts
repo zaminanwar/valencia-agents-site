@@ -3,11 +3,11 @@ export type NavLink = { label: string; href: string; external?: boolean }
 // The one action the header offers, beside the menu on phones.
 export const headerAction = { label: 'Tell Us About A Process', href: '/contact' }
 
+// Insights stays out of the header until it has notes to show; the footer still lists it.
 export const headerNav: NavLink[] = [
   { label: 'How We Work', href: '/how-we-work' },
   { label: 'Services', href: '/services' },
   { label: 'About', href: '/about' },
-  { label: 'Insights', href: '/insights' },
   { label: 'Contact', href: '/contact' },
 ]
 

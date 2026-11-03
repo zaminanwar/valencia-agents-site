@@ -1,6 +1,7 @@
 import { ButtonLink } from '@/components/button-link'
 import { PageHero } from '@/components/page-hero'
 import { PageSection } from '@/components/page-section'
+import { Prose } from '@/components/section'
 import { insights } from '@/content/insights'
 import { createMetadata } from '@/lib/metadata'
 
@@ -23,35 +24,29 @@ export default function Insights() {
 
       <PageSection
         id="what-this-will-be"
+        number="01"
         eyebrow={insights.willBe.eyebrow}
         title={insights.willBe.title}
       >
-        <div className="flex max-w-2xl flex-col gap-4">
-          {insights.willBe.paragraphs.map((paragraph) => (
-            <p key={paragraph} className="text-pretty text-muted-foreground sm:text-lg">
-              {paragraph}
-            </p>
-          ))}
-        </div>
-        <div className="flex flex-wrap gap-3">
-          <ButtonLink href={insights.willBe.primaryAction.href} size="lg">
+        <Prose paragraphs={insights.willBe.paragraphs} />
+        <div>
+          <ButtonLink href={insights.willBe.primaryAction.href} variant="outline" size="lg">
             {insights.willBe.primaryAction.label}
           </ButtonLink>
         </div>
       </PageSection>
 
-      <PageSection id="not-live" eyebrow={insights.notLive.eyebrow} title={insights.notLive.title}>
-        <div className="max-w-2xl border-l-4 border-primary bg-card p-5">
+      <PageSection
+        id="not-live"
+        number="02"
+        eyebrow={insights.notLive.eyebrow}
+        title={insights.notLive.title}
+      >
+        <div className="max-w-2xl border-l-2 border-primary bg-card p-5">
           <p className="text-pretty text-muted-foreground">{insights.notLive.note}</p>
         </div>
-        <div className="flex max-w-2xl flex-col gap-4">
-          {insights.notLive.paragraphs.map((paragraph) => (
-            <p key={paragraph} className="text-pretty text-muted-foreground sm:text-lg">
-              {paragraph}
-            </p>
-          ))}
-        </div>
-        <div className="flex flex-wrap gap-3">
+        <Prose paragraphs={insights.notLive.paragraphs} />
+        <div>
           <ButtonLink href={insights.notLive.primaryAction.href} size="lg">
             {insights.notLive.primaryAction.label}
           </ButtonLink>

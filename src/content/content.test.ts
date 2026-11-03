@@ -1,18 +1,21 @@
 import { describe, expect, it } from 'vitest'
 
 import { about } from '@/content/about'
+import { closing } from '@/content/closing'
 import { contact } from '@/content/contact'
-import { cta } from '@/content/cta'
 import { faq } from '@/content/faq'
-import { features } from '@/content/features'
+import { fit } from '@/content/fit'
 import { gap } from '@/content/gap'
 import { hero } from '@/content/hero'
 import { howWeWork } from '@/content/how-we-work'
 import { insights } from '@/content/insights'
+import { method } from '@/content/method'
 import { footerColumns, footerNote, headerAction, mobileNav } from '@/content/navigation'
+import { newFirm } from '@/content/new-firm'
 import { notFound } from '@/content/not-found'
+import { processAgent } from '@/content/process-agent'
+import { refusals } from '@/content/refusals'
 import { services } from '@/content/services'
-import { steps } from '@/content/steps'
 
 // Built from code points, so the rule against dashes holds in this file too.
 const DASHES = new RegExp(`[${String.fromCharCode(0x2013, 0x2014)}]`)
@@ -28,10 +31,13 @@ function strings(value: unknown): string[] {
 const sections = [
   hero,
   gap,
-  features,
-  steps,
+  processAgent,
+  fit,
+  method,
+  refusals,
+  newFirm,
   faq,
-  cta,
+  closing,
   notFound,
   howWeWork,
   services,
@@ -42,95 +48,75 @@ const sections = [
 
 // Subpage sections live one level down, so their titles and eyebrows are listed by hand.
 const subpageLabels = [
-  howWeWork.hero.eyebrow.lead,
-  howWeWork.hero.eyebrow.emphasis,
+  howWeWork.hero.eyebrow,
   howWeWork.problem.title,
-  howWeWork.problem.eyebrow.lead,
-  howWeWork.problem.eyebrow.emphasis,
+  howWeWork.problem.eyebrow,
   howWeWork.principle.title,
-  howWeWork.principle.eyebrow.lead,
-  howWeWork.principle.eyebrow.emphasis,
+  howWeWork.principle.eyebrow,
   ...howWeWork.principle.owners.map((owner) => owner.title),
   howWeWork.stages.title,
-  howWeWork.stages.eyebrow.lead,
-  howWeWork.stages.eyebrow.emphasis,
+  howWeWork.stages.eyebrow,
   ...howWeWork.stages.items.map((stage) => stage.name),
   howWeWork.guarantees.title,
-  howWeWork.guarantees.eyebrow.lead,
-  howWeWork.guarantees.eyebrow.emphasis,
+  howWeWork.guarantees.eyebrow,
   ...howWeWork.guarantees.items.map((item) => item.title),
   howWeWork.handover.title,
-  howWeWork.handover.eyebrow.lead,
-  howWeWork.handover.eyebrow.emphasis,
+  howWeWork.handover.eyebrow,
   howWeWork.commercial.title,
-  howWeWork.commercial.eyebrow.lead,
-  howWeWork.commercial.eyebrow.emphasis,
+  howWeWork.commercial.eyebrow,
   ...howWeWork.commercial.offers.map((offer) => offer.title),
   howWeWork.ontology.title,
-  howWeWork.ontology.eyebrow.lead,
-  howWeWork.ontology.eyebrow.emphasis,
-  services.hero.eyebrow.lead,
-  services.hero.eyebrow.emphasis,
+  howWeWork.ontology.eyebrow,
+  services.hero.eyebrow,
   services.discovery.title,
-  services.discovery.eyebrow.lead,
-  services.discovery.eyebrow.emphasis,
+  services.discovery.eyebrow,
   ...services.discovery.outputs.map((output) => output.title),
   services.implementation.title,
-  services.implementation.eyebrow.lead,
-  services.implementation.eyebrow.emphasis,
+  services.implementation.eyebrow,
   services.includes.title,
-  services.includes.eyebrow.lead,
-  services.includes.eyebrow.emphasis,
+  services.includes.eyebrow,
   ...services.includes.items.map((item) => item.title),
   services.refusals.title,
-  services.refusals.eyebrow.lead,
-  services.refusals.eyebrow.emphasis,
-  about.hero.eyebrow.lead,
-  about.hero.eyebrow.emphasis,
+  services.refusals.eyebrow,
+  about.hero.eyebrow,
   about.whatWeDo.title,
-  about.whatWeDo.eyebrow.lead,
-  about.whatWeDo.eyebrow.emphasis,
+  about.whatWeDo.eyebrow,
   about.notList.title,
-  about.notList.eyebrow.lead,
-  about.notList.eyebrow.emphasis,
+  about.notList.eyebrow,
   ...about.notList.items.map((item) => item.title),
   about.honestly.title,
-  about.honestly.eyebrow.lead,
-  about.honestly.eyebrow.emphasis,
+  about.honestly.eyebrow,
   about.honestly.primaryAction.label,
   about.honestly.secondaryAction.label,
-  contact.hero.eyebrow.lead,
-  contact.hero.eyebrow.emphasis,
+  contact.hero.eyebrow,
   contact.form.title,
-  contact.form.eyebrow.lead,
-  contact.form.eyebrow.emphasis,
-  insights.hero.eyebrow.lead,
-  insights.hero.eyebrow.emphasis,
+  contact.form.eyebrow,
+  insights.hero.eyebrow,
   insights.willBe.title,
-  insights.willBe.eyebrow.lead,
-  insights.willBe.eyebrow.emphasis,
+  insights.willBe.eyebrow,
   insights.willBe.primaryAction.label,
   insights.notLive.title,
-  insights.notLive.eyebrow.lead,
-  insights.notLive.eyebrow.emphasis,
+  insights.notLive.eyebrow,
   insights.notLive.primaryAction.label,
 ]
 
 const labels = [
   ...sections.flatMap((section) => ('title' in section ? [section.title] : [])),
-  ...sections.flatMap((section) =>
-    'eyebrow' in section ? [section.eyebrow.lead, section.eyebrow.emphasis] : [],
-  ),
+  ...sections.flatMap((section) => ('eyebrow' in section ? [section.eyebrow] : [])),
   headerAction.label,
   notFound.action.label,
-  cta.primaryAction.label,
-  cta.secondaryAction.label,
-  steps.primaryAction.label,
-  steps.secondaryAction.label,
+  hero.primaryAction.label,
+  hero.secondaryAction.label,
+  ...hero.facts.map((fact) => fact.term),
+  closing.primaryAction.label,
+  closing.secondaryAction.label,
+  method.action.label,
+  refusals.action.label,
+  newFirm.action.label,
   faq.contact.action.label,
-  ...features.items.map((item) => item.title),
-  ...features.extras.map((item) => item.title),
-  ...steps.items.map((step) => step.title),
+  ...processAgent.items.map((item) => item.title),
+  ...fit.traits.map((trait) => trait.title),
+  fit.example.label,
   ...mobileNav.map((link) => link.label),
   ...footerColumns.flatMap((column) => [column.title, ...column.links.map((link) => link.label)]),
   ...subpageLabels,
@@ -164,8 +150,15 @@ describe('content', () => {
     expect(offenders).toEqual([])
   })
 
-  it('emphasises words that are really in the hero headline', () => {
-    expect(hero.title).toContain(hero.titleEmphasis)
+  it('writes the hero headline as one sentence', () => {
+    expect(hero.title).toMatch(/^[A-Z][^.]*\.$/)
+  })
+
+  it('summarises the same seven stages the method page sets out', () => {
+    expect(method.stages.map((stage) => stage.name)).toEqual(
+      howWeWork.stages.items.map((stage) => stage.name),
+    )
+    expect(refusals.items).toEqual(howWeWork.guarantees.items.map((item) => item.title))
   })
 
   it('keeps FAQ questions unique, because each one is its accordion value', () => {
