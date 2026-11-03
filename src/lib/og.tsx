@@ -9,9 +9,9 @@ import { readRootTokens, toHex } from '@/lib/theme-tokens'
 export const OG_SIZE = { width: 1200, height: 630 }
 export const OG_CONTENT_TYPE = 'image/png'
 
-// The card's typefaces, the pair src/app/layout.tsx loads: Space Grotesk for the headline and the wordmark, Instrument Sans for the rest.
+// The card's typefaces, the pair src/app/layout.tsx loads: Instrument Serif for the headline and the wordmark, Instrument Sans for the rest.
 const FONT = 'Instrument Sans'
-const HEADING_FONT = 'Space Grotesk'
+const HEADING_FONT = 'Instrument Serif'
 
 // The light theme's values, for a token that is missing or cannot be converted.
 const FALLBACK = {
@@ -82,11 +82,11 @@ function getFonts(): Promise<LoadedFont[]> {
   fontsPromise ??= (async () => {
     try {
       const [heading, regular] = await Promise.all([
-        loadGoogleFont(HEADING_FONT, 500),
+        loadGoogleFont(HEADING_FONT, 400),
         loadGoogleFont(FONT, 400),
       ])
       return [
-        { name: HEADING_FONT, data: heading, weight: 500, style: 'normal' },
+        { name: HEADING_FONT, data: heading, weight: 400, style: 'normal' },
         { name: FONT, data: regular, weight: 400, style: 'normal' },
       ] satisfies LoadedFont[]
     } catch {
@@ -134,7 +134,7 @@ export async function createOgImage({ title, eyebrow, description, cta }: OgImag
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
         <img src={mark} width={40} height={40} alt="" />
-        <span style={{ fontFamily: HEADING_FONT, fontWeight: 500, fontSize: 36 }}>
+        <span style={{ fontFamily: HEADING_FONT, fontWeight: 400, fontSize: 40 }}>
           Valencia Agents
         </span>
       </div>
@@ -148,10 +148,10 @@ export async function createOgImage({ title, eyebrow, description, cta }: OgImag
         <span
           style={{
             fontFamily: HEADING_FONT,
-            fontWeight: 500,
-            fontSize: 66,
-            lineHeight: 1.05,
-            letterSpacing: -4,
+            fontWeight: 400,
+            fontSize: 76,
+            lineHeight: 1,
+            letterSpacing: -1.5,
             maxWidth: 1000,
           }}
         >

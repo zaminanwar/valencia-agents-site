@@ -19,7 +19,10 @@ function Column({
       <Eyebrow>{label}</Eyebrow>
       <ul className="flex flex-col gap-3">
         {items.map((item) => (
-          <li key={item} className="flex reveal flex-col gap-6 rounded-2xl bg-muted p-4">
+          <li
+            key={item}
+            className="flex reveal flex-col gap-6 rounded-2xl bg-muted p-4 transition-colors hover:bg-accent"
+          >
             <IconTile
               icon={kind === 'before' ? XIcon : CheckIcon}
               size="sm"

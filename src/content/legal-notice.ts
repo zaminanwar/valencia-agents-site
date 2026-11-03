@@ -10,7 +10,7 @@ export const legalNotice = {
         'VAT number: 123456789',
         'Email: hello@valencia-agents.example',
         'Phone: +34 123 456 789',
-        'Publication director: Christian Doe',
+        'Publication director: to be confirmed',
       ],
     },
     {

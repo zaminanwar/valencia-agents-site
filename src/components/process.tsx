@@ -26,9 +26,7 @@ export function Process() {
                 className="relative hidden size-4 rounded-full bg-foreground/70 md:block"
               />
               <IconTile icon={step.icon} size="lg" className="md:mt-6" />
-              <h3 className="font-heading text-3xl leading-9 font-medium tracking-tighter">
-                {step.title}
-              </h3>
+              <h3 className="font-heading text-3xl leading-none tracking-tight">{step.title}</h3>
               <p className="max-w-xs text-base tracking-tight text-pretty text-muted-foreground">
                 {step.body}
               </p>

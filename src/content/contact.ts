@@ -2,7 +2,7 @@ export const contactContent = {
   eyebrow: 'Contact',
   title: 'Let’s find the fastest way AI can reduce friction in your business.',
   description:
-    'Book a first call and I will help you identify where AI can save time, simplify operations, and create the biggest immediate gains. You’ll receive:',
+    'Book a first call and we will help you identify where AI can save time, simplify operations, and create the biggest immediate gains. You’ll receive:',
   points: [
     'The best AI opportunities for your business',
     'Clear priorities instead of vague ideas',

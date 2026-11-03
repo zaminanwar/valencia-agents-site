@@ -1,10 +1,8 @@
 import { CogIcon, DumbbellIcon, FileTextIcon } from 'lucide-react'
 
-import services from '@/content/images/services.webp'
-
 export const servicesContent = {
   eyebrow: 'Services',
-  title: 'Three ways I help businesses put AI to work.',
+  title: 'Three ways we help businesses put AI to work.',
   items: [
     {
       icon: FileTextIcon,
@@ -23,6 +21,5 @@ export const servicesContent = {
     },
   ],
   action: { label: 'Book a strategy call', href: '/#contact' },
-  image: { src: services, alt: 'A consultant studying charts on a screen' },
   chips: ['Spot process bottlenecks', 'Prioritize quick-win actions', 'Review current workflows'],
 }

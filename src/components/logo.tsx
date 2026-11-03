@@ -5,9 +5,7 @@ import { siteConfig } from '@/config/site'
 export function Logo() {
   return (
     <span translate="no" className="flex items-center text-foreground">
-      <span className="font-heading text-3xl leading-none font-medium tracking-tighter">
-        {siteConfig.name}
-      </span>
+      <span className="font-heading text-3xl leading-none tracking-tight">{siteConfig.name}</span>
     </span>
   )
 }

@@ -18,14 +18,16 @@ export function Benefits() {
         </div>
         <ul className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:col-span-7">
           {benefitsContent.items.map((item) => (
-            <li key={item.title} className="flex reveal flex-col gap-3">
-              <Image
-                src={item.image.src}
-                alt={item.image.alt}
-                sizes="(min-width: 1024px) 274px, (min-width: 640px) 50vw, 100vw"
-                className="h-36 w-full rounded-2xl object-cover"
-              />
-              <h3 className="mt-2 font-heading text-3xl leading-9 font-medium tracking-tighter">
+            <li key={item.title} className="group flex reveal flex-col gap-3">
+              <div className="overflow-hidden rounded-2xl">
+                <Image
+                  src={item.image.src}
+                  alt={item.image.alt}
+                  sizes="(min-width: 1024px) 274px, (min-width: 640px) 50vw, 100vw"
+                  className="h-36 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 motion-reduce:transition-none"
+                />
+              </div>
+              <h3 className="mt-2 font-heading text-3xl leading-none tracking-tight">
                 {item.title}
               </h3>
               <p className="text-base tracking-tight text-pretty text-muted-foreground">

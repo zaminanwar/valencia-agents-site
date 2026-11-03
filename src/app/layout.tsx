@@ -2,7 +2,7 @@ import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 
 import type { Viewport } from 'next'
-import { Instrument_Sans, Space_Grotesk } from 'next/font/google'
+import { Instrument_Sans, Instrument_Serif } from 'next/font/google'
 
 import './globals.css'
 import { JsonLd } from '@/components/json-ld'
@@ -13,8 +13,8 @@ import { siteSchemas } from '@/lib/structured-data'
 import { readRootTokens, toHex } from '@/lib/theme-tokens'
 import { cn } from '@/lib/utils'
 
-// Space Grotesk carries the headings and the wordmark; Instrument Sans carries everything else.
-const heading = Space_Grotesk({ subsets: ['latin'], variable: '--font-heading' })
+// Instrument Serif carries the headings and the wordmark; its sibling Instrument Sans carries everything else.
+const heading = Instrument_Serif({ subsets: ['latin'], weight: '400', variable: '--font-heading' })
 
 const sans = Instrument_Sans({ subsets: ['latin'], variable: '--font-sans' })
 

@@ -64,7 +64,7 @@ export function SectionTitle({
     <h2
       id={titleIdFor(sectionId)}
       className={cn(
-        'font-heading text-4xl leading-10 font-medium tracking-tighter text-balance',
+        'font-heading text-4xl leading-none tracking-tight text-balance sm:text-5xl',
         className,
       )}
     >

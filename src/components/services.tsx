@@ -1,9 +1,9 @@
 import { CheckIcon } from 'lucide-react'
-import Image from 'next/image'
 
 import { CtaLink } from '@/components/cta-link'
 import { IconTile } from '@/components/icon-tile'
 import { Section, SectionHeading } from '@/components/section'
+import { ServicesVisual } from '@/components/services-visual'
 import { servicesContent } from '@/content/services'
 import { cn } from '@/lib/utils'
 
@@ -27,7 +27,7 @@ export function Services() {
                 key={item.title}
                 name="services"
                 open={index === 0}
-                className="group rounded-2xl bg-muted open:bg-secondary open:text-secondary-foreground"
+                className="group rounded-2xl bg-muted transition-colors open:bg-secondary open:text-secondary-foreground hover:bg-accent open:hover:bg-secondary"
               >
                 <summary className="flex cursor-pointer items-center gap-4 rounded-2xl p-4 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none">
                   <IconTile
@@ -35,7 +35,7 @@ export function Services() {
                     tone="faint"
                     className="group-open:bg-primary-foreground/25"
                   />
-                  <h3 className="font-heading text-xl font-medium tracking-tighter">
+                  <h3 className="font-heading text-2xl leading-none tracking-tight">
                     {item.title}
                   </h3>
                 </summary>
@@ -51,12 +51,7 @@ export function Services() {
         </div>
 
         <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
-          <Image
-            src={servicesContent.image.src}
-            alt={servicesContent.image.alt}
-            sizes="(min-width: 1024px) 504px, 100vw"
-            className="aspect-square w-full rounded-3xl object-cover"
-          />
+          <ServicesVisual />
           {servicesContent.chips.map((chip, index) => (
             <span
               key={chip}
