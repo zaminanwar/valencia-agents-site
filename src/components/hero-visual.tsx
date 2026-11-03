@@ -1,4 +1,4 @@
-// A contour field: the level lines of a smooth surface, like a stress plot or a map's relief. Static and decorative.
+// A contour field: the level lines of a smooth surface, like a stress plot or a map's relief. Decorative; it only drifts.
 const SIZE = 504
 const CELLS = 72
 const LEVELS = 20
@@ -108,16 +108,18 @@ export function HeroVisual() {
       data-nosnippet
       className="aspect-square w-full rounded-3xl bg-muted"
     >
-      {LINES.map((line) => (
-        <path
-          key={line.index}
-          d={line.d}
-          className={STROKES[Math.floor((line.index / LEVELS) * STROKES.length)]}
-          fill="none"
-          strokeWidth="1.1"
-          strokeLinecap="round"
-        />
-      ))}
+      <g className="origin-center animate-drift motion-reduce:animate-none">
+        {LINES.map((line) => (
+          <path
+            key={line.index}
+            d={line.d}
+            className={STROKES[Math.floor((line.index / LEVELS) * STROKES.length)]}
+            fill="none"
+            strokeWidth="1.1"
+            strokeLinecap="round"
+          />
+        ))}
+      </g>
     </svg>
   )
 }

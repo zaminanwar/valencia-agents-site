@@ -2,10 +2,6 @@ import { CtaLink } from '@/components/cta-link'
 import { HeroVisual } from '@/components/hero-visual'
 import { Eyebrow } from '@/components/section'
 import { heroContent } from '@/content/hero'
-import { cn } from '@/lib/utils'
-
-// One chip sits at the top right of the photo, the other at the bottom left.
-const CHIP_PLACEMENTS = ['top-5 right-5', 'bottom-5 left-5']
 
 export function Hero() {
   return (
@@ -36,27 +32,6 @@ export function Hero() {
 
         <div className="relative mx-auto w-full max-w-lg animate-rise-fade delay-300 motion-reduce:animate-none lg:max-w-none">
           <HeroVisual />
-          {heroContent.chips.map((chip, index) => (
-            <div
-              key={chip.title}
-              aria-hidden="true"
-              data-nosnippet
-              className={cn(
-                'absolute flex items-center gap-3 rounded-xl bg-foreground/60 p-2 pr-4 text-primary-foreground backdrop-blur-md',
-                CHIP_PLACEMENTS[index],
-              )}
-            >
-              <span className="grid size-10 place-items-center rounded-lg bg-primary-foreground/25">
-                <chip.icon className="size-5" />
-              </span>
-              <span className="flex flex-col">
-                <span className="text-base tracking-tight">{chip.title}</span>
-                <span className="text-sm tracking-tight text-primary-foreground/80">
-                  {chip.detail}
-                </span>
-              </span>
-            </div>
-          ))}
         </div>
       </div>
     </section>
