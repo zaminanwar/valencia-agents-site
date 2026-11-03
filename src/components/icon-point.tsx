@@ -4,7 +4,7 @@ import { withInlineCode } from '@/lib/inline-code'
 
 export type IconPointProps = { icon: LucideIcon; title: string; description: string }
 
-// A list item led by a small icon tile, as under the features and beside the coding agents.
+// A list item led by a small icon tile, as under the features.
 export function IconPoint({ icon: Icon, title, description }: IconPointProps) {
   return (
     <li className="flex reveal items-start gap-3">

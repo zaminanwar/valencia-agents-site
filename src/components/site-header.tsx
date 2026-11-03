@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
 import { ButtonLink } from '@/components/button-link'
-import { GitHubIcon } from '@/components/icons'
 import { LogoLink } from '@/components/logo'
 import { MobileNav } from '@/components/mobile-nav'
 import { MotionToggle } from '@/components/motion-toggle'
@@ -10,7 +9,6 @@ import { headerAction, headerNav, mobileNav } from '@/content/navigation'
 function HeaderAction({ size }: { size?: 'lg' }) {
   return (
     <ButtonLink href={headerAction.href} size={size}>
-      <GitHubIcon data-icon="inline-start" />
       {headerAction.label}
     </ButtonLink>
   )

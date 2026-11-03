@@ -54,10 +54,10 @@ test('the logo scrolls back to the top of the home page', async ({ page }) => {
   await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0)
 })
 
-test('a header link jumps straight to its section', async ({ page }) => {
+test('a footer link jumps straight to its section', async ({ page }) => {
   await page.goto('/')
   const link = page
-    .getByRole('navigation', { name: 'Main' })
+    .getByRole('navigation', { name: 'Site' })
     .getByRole('link', { name: 'Questions & Answers' })
 
   // Every scroll position for a second after the click: a smooth scroll passes through many, a jump through one.
@@ -78,17 +78,6 @@ test('a header link jumps straight to its section', async ({ page }) => {
 
   expect(positions).toHaveLength(2)
   await expect(page.locator('#faq-title')).toBeInViewport()
-})
-
-test('the copy button copies the clone command', async ({ page, context }) => {
-  await context.grantPermissions(['clipboard-read', 'clipboard-write'])
-  await page.goto('/')
-  await page.getByRole('button', { name: 'Copy Command' }).click()
-
-  await expect(page.getByRole('button', { name: 'Copied' })).toBeVisible()
-  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(
-    `git clone ${siteConfig.links.repository}`,
-  )
 })
 
 // From a tablet up, the header's parts sit apart and its links keep to one line.

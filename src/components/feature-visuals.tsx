@@ -1,6 +1,5 @@
 import { CheckIcon, ChevronDownIcon, MoonIcon, SunIcon } from 'lucide-react'
 
-import { LogoMark } from '@/components/icons'
 import { MockBar, MockButton, MockCard, Swatches } from '@/components/mockup'
 import { siteConfig } from '@/config/site'
 import type { FeatureVisual as FeatureVisualName } from '@/content/features'
@@ -113,7 +112,7 @@ function Metadata() {
       <MockCard className="p-3 pb-5">
         <div className="flex items-center gap-2">
           <span className="grid size-6 shrink-0 place-items-center rounded-full border bg-background">
-            <LogoMark className="size-3" />
+            <span className="size-3 rounded-sm bg-foreground" />
           </span>
           <span className="flex min-w-0 flex-col text-xs leading-tight">
             <span className="truncate font-medium">{siteConfig.name}</span>
@@ -254,7 +253,7 @@ function MiniPage({ inverted = false }: { inverted?: boolean }) {
       )}
     >
       <div className="flex items-center justify-between">
-        <LogoMark className="size-3.5" />
+        <span className="size-3.5 rounded-sm bg-foreground" />
         {inverted ? (
           <>
             <MoonIcon className="size-3.5 dark:hidden" />
@@ -267,9 +266,9 @@ function MiniPage({ inverted = false }: { inverted?: boolean }) {
           </>
         )}
       </div>
-      <span className="mt-1 text-sm font-semibold">Your Landing Page</span>
+      <span className="mt-1 text-sm font-semibold">{siteConfig.name}</span>
       <span className={cn('text-xs', inverted ? 'text-background/70' : 'text-muted-foreground')}>
-        One preset, every section.
+        A process you can check.
       </span>
       <span
         className={cn(
@@ -297,7 +296,6 @@ function Presets() {
       </div>
       <MockCard className="absolute -bottom-4 -left-4 flex items-center gap-2 rounded-full px-2.5 py-1 text-xs">
         <Swatches className="-space-x-1 *:size-3" />
-        <span className="font-mono">apply b4Wm</span>
       </MockCard>
     </div>
   )

@@ -76,9 +76,7 @@ test.describe('the home page', () => {
     await page.goto('/')
     const nodes = await jsonLd(page)
     const types = nodes.map((node) => node['@type'])
-    expect(types).toEqual(
-      expect.arrayContaining(['Organization', 'WebSite', 'SoftwareSourceCode', 'FAQPage']),
-    )
+    expect(types).toEqual(expect.arrayContaining(['Organization', 'WebSite', 'FAQPage']))
     expect(nodes.find((node) => node['@type'] === 'WebSite')?.url).toBe(baseURL)
 
     // Google only accepts FAQ markup for questions and answers the page itself shows.
@@ -118,7 +116,16 @@ test.describe('the files crawlers read', () => {
   test('the sitemap lists exactly the pages there are', async ({ request, baseURL }) => {
     const body = await (await request.get('/sitemap.xml')).text()
     const urls = [...body.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1])
-    expect(urls).toEqual([baseURL])
+    expect(urls.toSorted()).toEqual(
+      [
+        baseURL,
+        `${baseURL}/how-we-work`,
+        `${baseURL}/services`,
+        `${baseURL}/about`,
+        `${baseURL}/insights`,
+        `${baseURL}/contact`,
+      ].toSorted(),
+    )
   })
 
   test('the manifest names the site and lists its icons', async ({ request }) => {
@@ -134,8 +141,6 @@ test.describe('the files crawlers read', () => {
     expect(og.headers()['content-type']).toBe('image/png')
     expect(await pngSize(og)).toEqual({ width: 1200, height: 630 })
 
-    const appleIcon = await request.get('/apple-icon.png')
-    expect(await pngSize(appleIcon)).toEqual({ width: 180, height: 180 })
     expect((await request.get('/icon.svg')).headers()['content-type']).toContain('image/svg+xml')
     expect((await request.get('/favicon.ico')).status()).toBe(200)
   })

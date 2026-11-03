@@ -54,7 +54,7 @@ export function Stage({
   )
 }
 
-// The card surface starter.7ovr.com uses: a soft diagonal from muted to background.
+// The card surface used across the site: a soft diagonal from muted to background.
 export function MockCard({
   className,
   children,

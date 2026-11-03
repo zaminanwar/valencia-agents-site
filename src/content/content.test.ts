@@ -1,13 +1,17 @@
 import { describe, expect, it } from 'vitest'
 
-import { agents } from '@/content/agents'
-import { appStarter } from '@/content/app-starter'
+import { about } from '@/content/about'
+import { contact } from '@/content/contact'
 import { cta } from '@/content/cta'
 import { faq } from '@/content/faq'
 import { features } from '@/content/features'
-import { hero, stack } from '@/content/hero'
+import { gap } from '@/content/gap'
+import { hero } from '@/content/hero'
+import { howWeWork } from '@/content/how-we-work'
+import { insights } from '@/content/insights'
 import { footerColumns, footerNote, headerAction, mobileNav } from '@/content/navigation'
 import { notFound } from '@/content/not-found'
+import { services } from '@/content/services'
 import { steps } from '@/content/steps'
 
 // Built from code points, so the rule against dashes holds in this file too.
@@ -21,7 +25,96 @@ function strings(value: unknown): string[] {
   return []
 }
 
-const sections = [hero, stack, features, steps, agents, appStarter, faq, cta, notFound]
+const sections = [
+  hero,
+  gap,
+  features,
+  steps,
+  faq,
+  cta,
+  notFound,
+  howWeWork,
+  services,
+  about,
+  contact,
+  insights,
+]
+
+// Subpage sections live one level down, so their titles and eyebrows are listed by hand.
+const subpageLabels = [
+  howWeWork.hero.eyebrow.lead,
+  howWeWork.hero.eyebrow.emphasis,
+  howWeWork.problem.title,
+  howWeWork.problem.eyebrow.lead,
+  howWeWork.problem.eyebrow.emphasis,
+  howWeWork.principle.title,
+  howWeWork.principle.eyebrow.lead,
+  howWeWork.principle.eyebrow.emphasis,
+  ...howWeWork.principle.owners.map((owner) => owner.title),
+  howWeWork.stages.title,
+  howWeWork.stages.eyebrow.lead,
+  howWeWork.stages.eyebrow.emphasis,
+  ...howWeWork.stages.items.map((stage) => stage.name),
+  howWeWork.guarantees.title,
+  howWeWork.guarantees.eyebrow.lead,
+  howWeWork.guarantees.eyebrow.emphasis,
+  ...howWeWork.guarantees.items.map((item) => item.title),
+  howWeWork.handover.title,
+  howWeWork.handover.eyebrow.lead,
+  howWeWork.handover.eyebrow.emphasis,
+  howWeWork.commercial.title,
+  howWeWork.commercial.eyebrow.lead,
+  howWeWork.commercial.eyebrow.emphasis,
+  ...howWeWork.commercial.offers.map((offer) => offer.title),
+  howWeWork.ontology.title,
+  howWeWork.ontology.eyebrow.lead,
+  howWeWork.ontology.eyebrow.emphasis,
+  services.hero.eyebrow.lead,
+  services.hero.eyebrow.emphasis,
+  services.discovery.title,
+  services.discovery.eyebrow.lead,
+  services.discovery.eyebrow.emphasis,
+  ...services.discovery.outputs.map((output) => output.title),
+  services.implementation.title,
+  services.implementation.eyebrow.lead,
+  services.implementation.eyebrow.emphasis,
+  services.includes.title,
+  services.includes.eyebrow.lead,
+  services.includes.eyebrow.emphasis,
+  ...services.includes.items.map((item) => item.title),
+  services.refusals.title,
+  services.refusals.eyebrow.lead,
+  services.refusals.eyebrow.emphasis,
+  about.hero.eyebrow.lead,
+  about.hero.eyebrow.emphasis,
+  about.whatWeDo.title,
+  about.whatWeDo.eyebrow.lead,
+  about.whatWeDo.eyebrow.emphasis,
+  about.notList.title,
+  about.notList.eyebrow.lead,
+  about.notList.eyebrow.emphasis,
+  ...about.notList.items.map((item) => item.title),
+  about.honestly.title,
+  about.honestly.eyebrow.lead,
+  about.honestly.eyebrow.emphasis,
+  about.honestly.primaryAction.label,
+  about.honestly.secondaryAction.label,
+  contact.hero.eyebrow.lead,
+  contact.hero.eyebrow.emphasis,
+  contact.form.title,
+  contact.form.eyebrow.lead,
+  contact.form.eyebrow.emphasis,
+  insights.hero.eyebrow.lead,
+  insights.hero.eyebrow.emphasis,
+  insights.willBe.title,
+  insights.willBe.eyebrow.lead,
+  insights.willBe.eyebrow.emphasis,
+  insights.willBe.primaryAction.label,
+  insights.notLive.title,
+  insights.notLive.eyebrow.lead,
+  insights.notLive.eyebrow.emphasis,
+  insights.notLive.primaryAction.label,
+]
 
 const labels = [
   ...sections.flatMap((section) => ('title' in section ? [section.title] : [])),
@@ -30,7 +123,6 @@ const labels = [
   ),
   headerAction.label,
   notFound.action.label,
-  appStarter.action.label,
   cta.primaryAction.label,
   cta.secondaryAction.label,
   steps.primaryAction.label,
@@ -39,9 +131,9 @@ const labels = [
   ...features.items.map((item) => item.title),
   ...features.extras.map((item) => item.title),
   ...steps.items.map((step) => step.title),
-  ...agents.points.map((point) => point.title),
   ...mobileNav.map((link) => link.label),
   ...footerColumns.flatMap((column) => [column.title, ...column.links.map((link) => link.label)]),
+  ...subpageLabels,
 ].filter((label) => label !== hero.title)
 
 describe('content', () => {
@@ -61,7 +153,7 @@ describe('content', () => {
     expect(offenders).toEqual([])
   })
 
-  // Questions read as sentences, the way a visitor would ask them, on this site and starter.7ovr.com alike.
+  // Questions read as sentences, the way a visitor would ask them.
   it('asks every FAQ question as a sentence', () => {
     const offenders = faq.items
       .map((item) => item.question)

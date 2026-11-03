@@ -26,7 +26,7 @@ export function createMetadata({
     description,
     applicationName: siteConfig.name,
     keywords: [...siteConfig.keywords],
-    authors: [{ name: siteConfig.author.name, url: siteConfig.author.url }],
+    authors: [{ name: siteConfig.author.name }],
     creator: siteConfig.author.name,
     publisher: siteConfig.author.name,
     alternates: { canonical: noIndex ? null : path },
@@ -41,8 +41,6 @@ export function createMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      site: siteConfig.xHandle,
-      creator: siteConfig.xHandle,
       title: fullTitle,
       description,
     },

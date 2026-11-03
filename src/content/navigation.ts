@@ -1,49 +1,55 @@
-import { siteConfig } from '@/config/site'
-
-// external marks a link that leaves the starter for the rest of 7Ovr, where a reader might not expect it.
 export type NavLink = { label: string; href: string; external?: boolean }
 
 // The one action the header offers, beside the menu on phones.
-export const headerAction = { label: 'Get The Starter', href: siteConfig.links.repository }
+export const headerAction = { label: 'Tell Us About A Process', href: '/contact' }
 
 export const headerNav: NavLink[] = [
-  { label: 'Features', href: '/#features' },
-  { label: 'How It Works', href: '/#how-it-works' },
-  { label: 'Coding Agents', href: '/#agents' },
-  { label: 'Vite Starter', href: '/#vite-starter' },
+  { label: 'How We Work', href: '/how-we-work' },
+  { label: 'Services', href: '/services' },
+  { label: 'About', href: '/about' },
+  { label: 'Insights', href: '/insights' },
+  { label: 'Contact', href: '/contact' },
+]
+
+// The menu adds Home, which the logo covers on wider screens, and the FAQ anchor.
+export const mobileNav: NavLink[] = [
+  { label: 'Home', href: '/' },
+  ...headerNav,
   { label: 'Questions & Answers', href: '/#faq' },
 ]
 
-// The menu adds Home, which the logo covers on wider screens.
-export const mobileNav: NavLink[] = [{ label: 'Home', href: '/' }, ...headerNav]
-
 export const footerColumns: { title: string; links: NavLink[] }[] = [
   {
-    title: 'Starter',
+    title: 'Site',
     links: [
-      { label: 'Source', href: siteConfig.links.repository },
-      { label: 'Use This Template', href: siteConfig.links.template },
-      { label: 'Report An Issue', href: siteConfig.links.issues },
-      { label: 'Documentation', href: siteConfig.links.docs, external: true },
-      { label: 'Changelog', href: siteConfig.links.changelog, external: true },
+      { label: 'Home', href: '/' },
+      { label: 'How We Work', href: '/how-we-work' },
+      { label: 'Services', href: '/services' },
+      { label: 'About', href: '/about' },
+      { label: 'Insights', href: '/insights' },
+      { label: 'Contact', href: '/contact' },
+      { label: 'Questions & Answers', href: '/#faq' },
     ],
   },
   {
-    title: '7Ovr',
+    title: 'Method',
     links: [
-      { label: 'Blocks', href: siteConfig.links.blocks },
-      { label: 'Templates', href: siteConfig.links.templates },
-      { label: 'Pro', href: siteConfig.links.pro },
-      { label: 'Vite Starter', href: siteConfig.links.appStarter },
+      { label: 'The Problem', href: '/how-we-work#problem' },
+      { label: 'The Principle', href: '/how-we-work#principle' },
+      { label: 'The Seven Stages', href: '/how-we-work#seven-stages' },
+      { label: 'Guarantees', href: '/how-we-work#guarantees' },
+      { label: 'Handover', href: '/how-we-work#handover' },
+      { label: 'Commercial', href: '/how-we-work#commercial' },
+      { label: 'Ontology', href: '/how-we-work#ontology' },
     ],
   },
   {
-    title: 'Community',
+    title: 'Contact',
     links: [
-      { label: 'X', href: siteConfig.links.x },
-      { label: 'Email', href: siteConfig.links.email },
+      { label: 'Email', href: 'mailto:hello@valencia-agents.example' },
+      { label: 'Tell Us About A Process', href: '/contact' },
     ],
   },
 ]
 
-export const footerNote = { credit: 'Built by', license: 'MIT licensed' }
+export const footerNote = { line: 'Valencia Agents, a consultancy in formation.' }

@@ -6,7 +6,7 @@ for (const width of [320, 390]) {
     await page.goto('/')
     await page.getByRole('button', { name: 'Open Menu' }).click()
     const menu = page.getByRole('dialog', { name: 'Menu', exact: true })
-    const label = await menu.getByText('Landing', { exact: true }).boundingBox()
+    const label = await menu.getByText('Valencia Agents', { exact: true }).boundingBox()
     const close = await menu.getByRole('button', { name: 'Close', exact: true }).boundingBox()
     expect(label).not.toBeNull()
     expect(close).not.toBeNull()
@@ -120,11 +120,6 @@ test('the browser theme color follows a manual theme change', async ({ page }) =
   expect(initial.length).toBeGreaterThan(0)
   await page.getByRole('button', { name: 'Toggle Theme' }).click()
   await expect.poll(colors).not.toEqual(initial)
-})
-
-test('commands stay verbatim when browser translation is enabled', async ({ page }) => {
-  await page.goto('/')
-  await expect(page.locator('code').first()).toHaveAttribute('translate', 'no')
 })
 
 test('an expanded FAQ can be shared and restored with Back', async ({ page }) => {

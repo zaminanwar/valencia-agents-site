@@ -39,12 +39,16 @@ test('every section and every FAQ answer is readable without JavaScript', async 
   await Promise.all(answers.map((answer) => expect(answer).toBeVisible()))
 })
 
-test("the header's links lead to sections that exist", async ({ page }) => {
+test("the header's links lead somewhere real", async ({ page, request }) => {
   await page.goto('/')
   await Promise.all(
-    headerNav.map((link) => {
-      const id = new URL(link.href, 'http://localhost').hash.slice(1)
-      return expect(page.locator(`section[id="${id}"]`)).toHaveCount(1)
+    headerNav.map(async (link) => {
+      const url = new URL(link.href, 'http://localhost')
+      if (url.hash) {
+        await expect(page.locator(`section[id="${url.hash.slice(1)}"]`)).toHaveCount(1)
+      } else {
+        expect((await request.get(link.href)).status()).toBe(200)
+      }
     }),
   )
 })

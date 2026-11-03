@@ -1,5 +1,5 @@
 {
-  "name": "shadcn-next-starter",
+  "name": "valencia-agents-site",
   "version": "0.0.1",
   "type": "module",
   "private": true,
@@ -51,7 +51,7 @@
     "typescript": "~7.0.2",
     "vitest": "^5.0.4"
   },
-  "description": "A Next.js landing-page starter on shadcn/ui and Base UI, built so every page is prerendered and crawlable.",
+  "description": "Valencia Agents: agentic workflows that run back-office processes, under human approval, then handed over.",
   "license": "MIT",
   "engines": {
     "node": ">=24",

@@ -1,39 +1,31 @@
 import { RouteIcon } from 'lucide-react'
 
-import { siteConfig } from '@/config/site'
-
-export type StepVisual = 'clone' | 'content' | 'preset' | 'deploy'
-
 export const steps = {
-  eyebrow: { icon: RouteIcon, lead: 'From Clone', emphasis: 'To Indexed' },
-  title: 'Make It Yours In Four Steps',
-  description:
-    'The starter does the plumbing once, so a new site is a config file, a content folder and a deploy. Any of the 540+ 7Ovr blocks installs straight into it.',
-  primaryAction: { label: 'Browse 540+ Blocks', href: siteConfig.links.blocks },
-  secondaryAction: { label: 'Explore Pro', href: siteConfig.links.pro },
+  eyebrow: { icon: RouteIcon, lead: 'What Actually', emphasis: 'Changes' },
+  title: 'From A Tool Your Team Opens To A Process That Runs Itself',
+  description: 'Process AI, not a better chatbot. Four things make it different.',
+  primaryAction: { label: 'Read The Method', href: '/how-we-work' },
+  secondaryAction: { label: 'Tell Us About A Process', href: '/contact' },
   items: [
     {
-      visual: 'clone',
-      title: 'Clone The Starter',
-      description: 'Use the GitHub template or clone the repository, then run `pnpm install`.',
+      title: 'It Runs Itself',
+      description:
+        'It starts on its own when something arrives, carries a case across days and across people, and works in your systems, in the language of your business. Not a tool someone opens, a process that moves on its own.',
     },
     {
-      visual: 'content',
-      title: 'Make It Yours',
+      title: 'It Decides Safely',
       description:
-        'Set the name and links in `src/config/site.ts`, and the copy in `src/content/`, one file per section.',
+        'The steps are fixed and run the same way every time. The model judges only inside those steps: it drafts, checks, and triages, never on its own authority. It acts under its own scoped permissions, not borrowed from a user.',
     },
     {
-      visual: 'preset',
-      title: 'Restyle With A Preset',
+      title: 'It Can Be Checked',
       description:
-        'Build a preset on ui.shadcn.com/create and apply its code. Every section follows the new tokens.',
+        'Every step is logged, so you can see afterward exactly what it did and who signed off. Before it touches real cases, it is measured against real cases with correct outputs, agreed with your own grader, and against a baseline of how the work performs today.',
     },
     {
-      visual: 'deploy',
-      title: 'Deploy And Get Found',
+      title: 'It Ends Up Yours',
       description:
-        'Deploy to Vercel. The site URL resolves from the deployment, so canonicals, the sitemap and JSON-LD point at your domain.',
+        'When we hand over, you keep everything: the agents and flows in your tenant, the code in your repository, the evaluation harness, the documentation. Revocable access is not a handover.',
     },
-  ] satisfies { visual: StepVisual; title: string; description: string }[],
+  ] satisfies { title: string; description: string }[],
 }

@@ -1,6 +1,7 @@
+import { MailIcon } from 'lucide-react'
+
 import { ButtonLink } from '@/components/button-link'
 import { FaqAccordion } from '@/components/faq-accordion'
-import { GitHubIcon } from '@/components/icons'
 import { JsonLd } from '@/components/json-ld'
 import { Section, SectionHeading } from '@/components/section'
 import { AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
@@ -33,7 +34,7 @@ export function Faq() {
           <div className="flex reveal flex-col items-start gap-3 border-t pt-6">
             <p className="text-sm font-medium">{faq.contact.title}</p>
             <ButtonLink href={faq.contact.action.href} variant="outline">
-              <GitHubIcon data-icon="inline-start" />
+              <MailIcon data-icon="inline-start" />
               {faq.contact.action.label}
             </ButtonLink>
           </div>

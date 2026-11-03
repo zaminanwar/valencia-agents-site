@@ -1,10 +1,8 @@
-import { Agents } from '@/components/agents'
-import { AppStarter } from '@/components/app-starter'
 import { Cta } from '@/components/cta'
 import { Faq } from '@/components/faq'
 import { Features } from '@/components/features'
+import { Gap } from '@/components/gap'
 import { Hero } from '@/components/hero'
-import { Stack } from '@/components/stack'
 import { Steps } from '@/components/steps'
 import { createMetadata } from '@/lib/metadata'
 
@@ -14,11 +12,9 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Stack />
+      <Gap />
       <Features />
       <Steps />
-      <Agents />
-      <AppStarter />
       <Faq />
       <Cta />
     </>

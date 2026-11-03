@@ -1,78 +1,46 @@
 import { MessageCircleQuestionMarkIcon } from 'lucide-react'
 
-import { siteConfig } from '@/config/site'
-
 export type Faq = { question: string; answer: string }
 
 // Plain strings, so the section and its FAQPage JSON-LD read one source. Backticks render as inline code.
 export const faq = {
-  eyebrow: { icon: MessageCircleQuestionMarkIcon, lead: 'Before You', emphasis: 'Clone It' },
+  eyebrow: { icon: MessageCircleQuestionMarkIcon, lead: 'Questions', emphasis: 'And Answers' },
   title: 'Questions & Answers',
-  description: 'What ships in the starter, what it costs, and how it fits your stack.',
+  description: 'What a process agent is, what you get, what it costs, and what we need from you.',
   contact: {
     title: 'Still have a question?',
-    action: { label: 'Ask On GitHub', href: siteConfig.links.issues },
+    action: { label: 'Contact Us', href: '/contact' },
   },
   items: [
     {
-      question: 'What is the 7Ovr Landing Starter?',
+      question: 'What is a process agent?',
       answer:
-        'A free, open-source Next.js 16 starter for landing pages, built on shadcn/ui and Base UI. Every page is prerendered, and every promise it makes, from SEO to accessibility, is covered by a test.',
+        'A process agent runs a whole back-office process, not one chat at a time. It starts on its own when something arrives, carries a case across days and across people, and works in your systems under a deterministic control plane, with a human approving anything consequential.',
     },
     {
-      question: 'Is it free for commercial projects?',
+      question: 'What do you actually deliver?',
       answer:
-        'Yes. It is MIT licensed, so you can use it for client work and commercial products, and you owe nothing back. The Pro blocks and templates on 7Ovr are optional and separate.',
+        'A working process in your own estate: the agent, the deterministic steps, permission-respecting retrieval, and approval gates, proved against a golden set, piloted with one team, and handed over with the code, the models, the evaluation harness, and the documentation.',
     },
     {
-      question: 'What do I need installed?',
+      question: 'How much does it cost?',
       answer:
-        'Node 24 or newer and pnpm 12 or newer. There is no global CLI to install and no account to create.',
+        'Every engagement is fixed-price, set at scoping once the process is mapped. Discovery is credited into the build when the build follows within an agreed window. Platform and usage costs run on your accounts at cost, with no markup.',
     },
     {
-      question: 'What does tested mean here?',
+      question: 'What do you need from us?',
       answer:
-        'Each promise has a test: metadata and JSON-LD on every route, one h1 and working landmarks, readable HTML with JavaScript off, Lighthouse budgets, and noindex on preview deploys. CI runs them on every push, beside lint, format and type checks.',
+        'Four roles, named: someone who owns the number, someone who grades the work, someone who owns the content, and someone from IT and security. Plus time with the people who do the work, access to the content, and a pilot team before anything goes live.',
     },
     {
-      question: 'Does the page work without JavaScript?',
+      question: 'What happens after handover?',
       answer:
-        'Yes. Every section and every FAQ answer is in the server-rendered HTML. JavaScript only adds the theme toggle, the mobile menu, the copy button and the FAQ accordion.',
+        'Your team runs the golden set unaided and passes, and then the system is yours. Thirty days of post-handover fixes are included, and on exit we remove our access. Tune covers the 90 days after handover with weekly sampling, regression tests, and monthly reports.',
     },
     {
-      question: 'Where do I change the copy?',
+      question: 'Do you keep our data?',
       answer:
-        'Site-wide details live in `src/config/site.ts`, and the copy lives in `src/content/`, one file per section. The sections only render what they are given.',
-    },
-    {
-      question: 'Does it include auth, a database or analytics?',
-      answer:
-        'No. It is a marketing site with no server code of its own. For an app, pair it with the 7Ovr Vite Starter; for a form or analytics, add your own.',
-    },
-    {
-      question: 'How do I restyle it?',
-      answer:
-        'Build a preset on ui.shadcn.com/create and run `pnpm exec shadcn apply <code>`. Colors, radius and fonts all come from shadcn theme tokens, so every section follows.',
-    },
-    {
-      question: 'Can I add 7Ovr blocks to it?',
-      answer:
-        'Yes. It is a standard shadcn/ui project, so all 540+ blocks install straight into it, source included: free ones with `pnpm exec shadcn add @7ovr/<name>`, Pro ones from `@7ovr-pro` with a license key.',
-    },
-    {
-      question: 'Does it work with coding agents?',
-      answer:
-        'Yes. `CLAUDE.md` holds every convention and `AGENTS.md` points to it, so Claude Code, Codex and Cursor keep new pages and sections on the same patterns.',
-    },
-    {
-      question: 'Where can I deploy it?',
-      answer:
-        'Vercel works with no setup. It is a standard Next.js app, so any host that runs `next start` works too; there, set `SITE_URL` and `SITE_ENV=production` before you build, so canonicals and indexing are right.',
-    },
-    {
-      question: 'How do I keep it updated?',
-      answer:
-        'It is source you own, so nothing updates behind your back. Renovate keeps the dependencies current, and you pull in the upstream changes you want.',
+        'No. There is no separate store of your data and no proprietary platform. Retrieval respects permissions. The agent sees only what each user is allowed to see, and nothing from your estate is shared with another client, except the method itself.',
     },
   ] satisfies Faq[],
 }

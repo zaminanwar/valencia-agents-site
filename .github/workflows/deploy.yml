@@ -1,0 +1,43 @@
+name: Deploy
+
+on:
+  workflow_run:
+    workflows: ['CI']
+    types: [completed]
+    branches: [master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+      - uses: google-github-actions/setup-gcloud@v2
+      - run: gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
+      - run: >-
+          docker build
+          --build-arg SITE_URL=https://valencia-agents-site-pj6uhtqcuq-uc.a.run.app
+          -t us-central1-docker.pkg.dev/consultancy-website-512906/cloud-run-source-deploy/valencia-agents-site:${{ github.event.workflow_run.head_sha }}
+          .
+      - run: >-
+          docker push
+          us-central1-docker.pkg.dev/consultancy-website-512906/cloud-run-source-deploy/valencia-agents-site:${{ github.event.workflow_run.head_sha }}
+      - run: >-
+          gcloud run deploy valencia-agents-site
+          --image us-central1-docker.pkg.dev/consultancy-website-512906/cloud-run-source-deploy/valencia-agents-site:${{ github.event.workflow_run.head_sha }}
+          --region us-central1
+          --project consultancy-website-512906
+          --memory 512Mi

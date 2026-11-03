@@ -113,7 +113,7 @@ function getFonts(): Promise<LoadedFont[]> {
 let markPromise: Promise<string> | null = null
 
 function getMark(): Promise<string> {
-  markPromise ??= readFile(join(process.cwd(), 'public', 'brand', '7ovr-mark.svg')).then(
+  markPromise ??= readFile(join(process.cwd(), 'public', 'brand', 'valencia-mark.svg')).then(
     (svg) => `data:image/svg+xml;base64,${svg.toString('base64')}`,
   )
   return markPromise
@@ -145,7 +145,7 @@ export async function createOgImage({ title, eyebrow, description, cta }: OgImag
         color: palette.foreground,
       }}
     >
-      {/* The mark, oversized and faint, so the card reads as 7Ovr even at timeline size. */}
+      {/* The mark, oversized and faint, so the card reads as Valencia Agents even at timeline size. */}
       <img
         src={mark}
         width={520}
@@ -156,9 +156,7 @@ export async function createOgImage({ title, eyebrow, description, cta }: OgImag
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
         <img src={mark} width={40} height={40} alt="" />
-        <span style={{ fontFamily: 'Syne', fontWeight: 700, fontSize: 34 }}>7Ovr</span>
-        <span style={{ fontSize: 30, color: palette.border }}>/</span>
-        <span style={{ fontWeight: 400, fontSize: 28, color: palette.muted }}>Landing</span>
+        <span style={{ fontFamily: 'Syne', fontWeight: 700, fontSize: 34 }}>Valencia Agents</span>
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>

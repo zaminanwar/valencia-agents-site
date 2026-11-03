@@ -5,7 +5,7 @@ import { SiteLink } from '@/components/site-link'
 
 describe('SiteLink', () => {
   it('opens another site in a new tab without a referrer', () => {
-    render(<SiteLink href="https://github.com/7ovr">Source</SiteLink>)
+    render(<SiteLink href="https://example.com">Source</SiteLink>)
 
     const link = screen.getByRole('link', { name: 'Source' })
     expect(link).toHaveAttribute('target', '_blank')
@@ -13,10 +13,10 @@ describe('SiteLink', () => {
   })
 
   it('hands a mail link to the mail app in the same tab', () => {
-    render(<SiteLink href="mailto:hello@7ovr.com">Email</SiteLink>)
+    render(<SiteLink href="mailto:hello@example.com">Email</SiteLink>)
 
     const link = screen.getByRole('link', { name: 'Email' })
-    expect(link).toHaveAttribute('href', 'mailto:hello@7ovr.com')
+    expect(link).toHaveAttribute('href', 'mailto:hello@example.com')
     expect(link).not.toHaveAttribute('target')
   })
 

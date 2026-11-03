@@ -1,10 +1,10 @@
 import {
-  GitCommitHorizontalIcon,
-  ImageIcon,
+  EyeIcon,
   LayersIcon,
-  LinkIcon,
+  LockIcon,
+  ShieldCheckIcon,
+  WrenchIcon,
   type LucideIcon,
-  MoonStarIcon,
 } from 'lucide-react'
 
 export type FeatureVisual =
@@ -16,68 +16,72 @@ export type FeatureVisual =
   | 'presets'
 
 export const features = {
-  eyebrow: { icon: LayersIcon, lead: 'Everything', emphasis: 'Already Wired' },
-  title: 'Everything A Landing Page Needs, Already Done',
+  eyebrow: { icon: LayersIcon, lead: 'Different Offices,', emphasis: 'Same Shape Of Work' },
+  title: 'Different Offices, The Same Shape Of Work',
   description:
-    'Speed, search, accessibility, design and tests are handled from the first commit, and CI keeps each of them true after you make the site your own.',
+    'Companies with a back-office process that is document-heavy, repetitive, and approval-laden, where getting it wrong costs real money.',
   items: [
     {
-      visual: 'prerender',
-      title: 'Static And Fast By Default',
+      visual: 'content',
+      title: 'Engineering Companies',
       description:
-        'Every route prerenders to static HTML at build time. A dynamic API anywhere fails the build, and Lighthouse budgets in CI keep every page fast.',
-    },
-    {
-      visual: 'metadata',
-      title: 'Complete SEO On Every Page',
-      description:
-        'One helper writes the title, canonical and Open Graph card of every page, with JSON-LD and a sitemap beside it, so no page ships half a head.',
+        'Back-office knowledge work in engineering offices, particular to each office, and worth fitting the agent to rather than redesigning the office around the agent.',
     },
     {
       visual: 'quality',
-      title: 'Tested On Every Push',
+      title: 'Industrial Companies',
       description:
-        'Vitest, Playwright and Lighthouse run in CI beside lint, format and type checks, so what works today keeps working.',
+        'Document-heavy, approval-laden operations work where a missed requirement or an unsupported claim carries real cost.',
     },
     {
-      visual: 'no-javascript',
-      title: 'Accessible By Default',
+      visual: 'metadata',
+      title: 'RFP Response Teams',
       description:
-        'One h1 per page, a skip link, visible focus and reduced motion, and every section stays readable with JavaScript off.',
+        'The kind of work we start with: high-volume documents in, a governed decision out, quality checkable requirement by requirement.',
     },
     {
-      visual: 'content',
-      title: 'Every Word In One Place',
+      visual: 'prerender',
+      title: 'Approval-Laden Processes',
       description:
-        'All the copy lives in typed files under `src/content/`, one per section, so a new headline never means touching a component.',
+        'Work that means reading, synthesizing, judging, and deciding from documents and systems, where a human must own the consequences.',
     },
     {
       visual: 'presets',
-      title: 'One Preset Restyles It All',
+      title: 'Established Estates',
       description:
-        'Colors, radius and fonts come from shadcn theme tokens, so `shadcn apply` restyles every section, in light and dark.',
+        'Companies already running on an established estate, where the process lives in documents and email today and the estate already provides the permissions, audit, and identity to build on.',
+    },
+    {
+      visual: 'no-javascript',
+      title: 'Teams Held Together By Key People',
+      description:
+        'Processes that depend on a few people to hold them together, and would break, or stall, if those people were away.',
     },
   ] satisfies { visual: FeatureVisual; title: string; description: string }[],
   extras: [
     {
-      icon: ImageIcon,
-      title: 'Share Cards For Every Page',
-      description: "Open Graph images drawn at build time in your theme's colors.",
+      icon: ShieldCheckIcon,
+      title: 'Approval-Bound',
+      description:
+        'Nothing consequential happens without a person deciding on the exact content in front of them.',
     },
     {
-      icon: MoonStarIcon,
-      title: 'Dark Mode Without A Flash',
-      description: 'Light, dark and system themes, set before the first paint.',
+      icon: LockIcon,
+      title: 'Permissions As The User',
+      description:
+        'Retrieval respects your permissions. The agent sees only what each user is allowed to see.',
     },
     {
-      icon: GitCommitHorizontalIcon,
-      title: 'Guarded Commits',
-      description: 'Git hooks format and lint staged files on every commit.',
+      icon: EyeIcon,
+      title: 'Auditable And Provable',
+      description:
+        'What it did, what evidence it used, and who approved it, logged and yours to inspect.',
     },
     {
-      icon: LinkIcon,
-      title: 'Clone-Safe URLs',
-      description: 'A fresh deploy points its canonicals at its own domain.',
+      icon: WrenchIcon,
+      title: 'Fit First',
+      description:
+        'Built to match how your office already works. Improvement comes later, from what the running system shows.',
     },
   ] satisfies { icon: LucideIcon; title: string; description: string }[],
 }

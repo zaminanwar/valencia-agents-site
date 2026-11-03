@@ -1,0 +1,11 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '--build-arg'
+      - 'SITE_URL=https://valencia-agents-site-pj6uhtqcuq-uc.a.run.app'
+      - '-t'
+      - 'us-central1-docker.pkg.dev/consultancy-website-512906/cloud-run-source-deploy/valencia-agents-site:20261103-hero-teal'
+      - '.'
+images:
+  - 'us-central1-docker.pkg.dev/consultancy-website-512906/cloud-run-source-deploy/valencia-agents-site:20261103-hero-teal'

@@ -1,15 +1,12 @@
 import { ZapIcon } from 'lucide-react'
 
 import { ButtonLink } from '@/components/button-link'
-import { CopyCommand } from '@/components/copy-command'
 import { Eyebrow } from '@/components/eyebrow'
-import { HeroLogos } from '@/components/hero-logos'
-import { GitHubIcon } from '@/components/icons'
 import { hero } from '@/content/hero'
 import { withInlineCode } from '@/lib/inline-code'
 import { cn } from '@/lib/utils'
 
-// The eyebrow bolt, filled like the one on starter.7ovr.com.
+// The eyebrow bolt, filled.
 function FilledZap({ className }: { className?: string }) {
   return <ZapIcon className={cn(className, 'fill-current')} />
 }
@@ -26,12 +23,11 @@ export function Hero() {
       aria-labelledby="hero-title"
       className="relative isolate px-4 pt-20 pb-12 sm:px-6 sm:pt-28 sm:pb-16"
     >
-      {/* Taller than the hero on purpose: it fades out behind the stack strip instead of stopping at a hard edge. */}
+      {/* Taller than the hero on purpose, so it fades out instead of stopping at a hard edge. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 mx-auto h-176 max-w-5xl bg-glow"
       />
-      <HeroLogos />
 
       <div className="relative mx-auto flex max-w-4xl flex-col items-center gap-6 text-center">
         <div className="animate-rise-fade motion-reduce:animate-none">
@@ -46,7 +42,7 @@ export function Hero() {
           <br className="max-lg:hidden" />
           {before.slice(cut)}
           {/* A chip like the inline code on the page, in a lighter weight than the headline. */}
-          <em className="rounded-xl bg-foreground/10 box-decoration-clone px-3 font-light not-italic">
+          <em className="rounded-xl bg-accent box-decoration-clone px-3 font-light text-accent-foreground not-italic">
             {emphasis}
           </em>
           {after}
@@ -54,11 +50,12 @@ export function Hero() {
         <p className="max-w-2xl animate-rise-fade text-lg text-pretty text-muted-foreground delay-150 motion-reduce:animate-none">
           {withInlineCode(hero.description)}
         </p>
-        <div className="mt-2 flex max-w-full animate-rise-fade items-center gap-3 delay-200 motion-reduce:animate-none">
-          <CopyCommand command={hero.command} highlight={hero.commandHighlight} />
-          <ButtonLink href={hero.action.href} size="lg">
-            <GitHubIcon data-icon="inline-start" />
-            {hero.action.label}
+        <div className="mt-2 flex max-w-full animate-rise-fade flex-wrap items-center justify-center gap-3 delay-200 motion-reduce:animate-none">
+          <ButtonLink href={hero.primaryAction.href} variant="outline" size="lg">
+            {hero.primaryAction.label}
+          </ButtonLink>
+          <ButtonLink href={hero.secondaryAction.href} variant="secondary" size="lg">
+            {hero.secondaryAction.label}
           </ButtonLink>
         </div>
       </div>

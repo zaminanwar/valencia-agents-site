@@ -1,6 +1,5 @@
 import { ButtonLink } from '@/components/button-link'
 import { Eyebrow } from '@/components/eyebrow'
-import { GitHubIcon } from '@/components/icons'
 import { MockCard } from '@/components/mockup'
 import { Section, SectionDescription, SectionTitle } from '@/components/section'
 import { cta } from '@/content/cta'
@@ -48,7 +47,7 @@ export function Cta() {
       </div>
 
       <div className="relative mx-auto flex max-w-xl reveal flex-col items-center gap-5 text-center">
-        <Eyebrow icon={GitHubIcon} {...cta.eyebrow} />
+        <Eyebrow {...cta.eyebrow} />
         <SectionTitle sectionId="get-started" className="sm:text-5xl">
           {cta.title}
         </SectionTitle>
@@ -58,7 +57,6 @@ export function Cta() {
             {cta.secondaryAction.label}
           </ButtonLink>
           <ButtonLink href={cta.primaryAction.href} size="lg">
-            <GitHubIcon data-icon="inline-start" />
             {cta.primaryAction.label}
           </ButtonLink>
         </div>

@@ -1,7 +1,6 @@
 import { ArrowUpRightIcon, MailIcon } from 'lucide-react'
 
 import { ButtonLink } from '@/components/button-link'
-import { GitHubIcon, LogoMark, XIcon } from '@/components/icons'
 import { LogoLink, Wordmark } from '@/components/logo'
 import { SiteLink } from '@/components/site-link'
 import { FooterThemeToggle } from '@/components/theme-toggle'
@@ -19,24 +18,8 @@ export function SiteFooter() {
           </p>
           <div className="flex items-center gap-2">
             <ButtonLink
-              href={siteConfig.links.repository}
-              aria-label="Source On GitHub"
-              variant="outline"
-              size="icon"
-            >
-              <GitHubIcon />
-            </ButtonLink>
-            <ButtonLink
-              href={siteConfig.links.x}
-              aria-label="7Ovr On X"
-              variant="outline"
-              size="icon"
-            >
-              <XIcon />
-            </ButtonLink>
-            <ButtonLink
               href={siteConfig.links.email}
-              aria-label="Email 7Ovr"
+              aria-label="Email Valencia Agents"
               variant="outline"
               size="icon"
             >
@@ -76,18 +59,7 @@ export function SiteFooter() {
 
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         <div className="flex flex-col-reverse items-start justify-between gap-4 border-t py-6 sm:flex-row sm:items-center">
-          <p className="flex items-center gap-1.5 text-sm text-muted-foreground">
-            {footerNote.credit}
-            <SiteLink
-              href={siteConfig.links.home}
-              className="flex items-center gap-1.5 rounded-sm font-medium text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
-            >
-              <LogoMark className="size-4" />
-              {siteConfig.author.name}
-            </SiteLink>
-            <span aria-hidden="true">·</span>
-            {footerNote.license}
-          </p>
+          <p className="text-sm text-muted-foreground">{footerNote.line}</p>
           <FooterThemeToggle />
         </div>
       </div>
