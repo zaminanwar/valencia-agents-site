@@ -1,15 +1,18 @@
 # Valencia Agents site
 
-The website for Valencia Agents, a consultancy in formation that builds agentic
-workflows for reasoning-heavy back-office processes and hands them over.
+The website for Valencia Agents, an AI consultancy in formation.
+
+The design replicates the Consultia template for Framer, a free template by
+Yohann Varillon Design, rebuilt as a Next.js site so the code, the tests and the
+deploy stay ours. The copy and the photos are still the template's placeholders
+until the real ones replace them.
 
 Live at https://valencia-agents-site-pj6uhtqcuq-uc.a.run.app. The site is
 not indexed yet: it serves a noindex header until launch.
 
-Built on a Next.js landing starter (MIT), rebuilt with Valencia content. All
-copy lives in `src/content/` and `src/config/site.ts`. See `CLAUDE.md` for
-the working rules: pnpm only, theme tokens only, no em dashes, Title Case
-labels, and checks green before anything ships.
+All copy lives in `src/content/` and `src/config/site.ts`. See `CLAUDE.md`
+for the working rules: pnpm only, theme tokens only, no em dashes, sentence
+case, and checks green before anything ships.
 
 ## Run it
 

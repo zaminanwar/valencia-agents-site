@@ -9,18 +9,18 @@ import { readRootTokens, toHex } from '@/lib/theme-tokens'
 export const OG_SIZE = { width: 1200, height: 630 }
 export const OG_CONTENT_TYPE = 'image/png'
 
-// The card's typefaces, the pair src/app/layout.tsx loads: the serif for the headline and the wordmark, the sans for the rest.
-const FONT = 'IBM Plex Sans'
-const HEADING_FONT = 'Newsreader'
+// The card's typefaces, the pair src/app/layout.tsx loads: Space Grotesk for the headline and the wordmark, Instrument Sans for the rest.
+const FONT = 'Instrument Sans'
+const HEADING_FONT = 'Space Grotesk'
 
 // The light theme's values, for a token that is missing or cannot be converted.
 const FALLBACK = {
-  background: '#fbfaf8',
-  foreground: '#1f2a2c',
-  'muted-foreground': '#5f686b',
-  border: '#d6d3cd',
-  primary: '#2f5f5c',
-  'primary-foreground': '#fbfaf8',
+  background: '#ffffff',
+  foreground: '#1a1a1a',
+  'muted-foreground': '#666666',
+  border: '#e6e5e2',
+  primary: '#1a1a1a',
+  'primary-foreground': '#ffffff',
 }
 
 type Palette = {
@@ -151,7 +151,7 @@ export async function createOgImage({ title, eyebrow, description, cta }: OgImag
             fontWeight: 500,
             fontSize: 66,
             lineHeight: 1.05,
-            letterSpacing: -1.5,
+            letterSpacing: -4,
             maxWidth: 1000,
           }}
         >

@@ -65,7 +65,7 @@ test.describe('the home page', () => {
     await expect(page.getByRole('contentinfo')).toHaveCount(1)
 
     await page.keyboard.press('Tab')
-    const skip = page.getByRole('link', { name: 'Skip To Content' })
+    const skip = page.getByRole('link', { name: 'Skip to content' })
     await expect(skip).toBeFocused()
     await expect(skip).toHaveAttribute('href', '#main')
     // Once focused it is a real target, at least the 24px WCAG 2.2 asks for.
@@ -97,7 +97,7 @@ test.describe('the home page', () => {
 test('a missing page is a 404 with its own title and no canonical', async ({ page }) => {
   const response = await page.goto('/this-page-does-not-exist')
   expect(response?.status()).toBe(404)
-  await expect(page).toHaveTitle(`Page Not Found - ${siteConfig.name}`)
+  await expect(page).toHaveTitle(`Page not found - ${siteConfig.name}`)
   expect(await meta(page, 'meta[name="robots"]')).toMatch(/noindex/)
   await expect(page.locator('link[rel="canonical"]')).toHaveCount(0)
 })
@@ -116,16 +116,7 @@ test.describe('the files crawlers read', () => {
   test('the sitemap lists exactly the pages there are', async ({ request, baseURL }) => {
     const body = await (await request.get('/sitemap.xml')).text()
     const urls = [...body.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1])
-    expect(urls.toSorted()).toEqual(
-      [
-        baseURL,
-        `${baseURL}/how-we-work`,
-        `${baseURL}/services`,
-        `${baseURL}/about`,
-        `${baseURL}/insights`,
-        `${baseURL}/contact`,
-      ].toSorted(),
-    )
+    expect(urls.toSorted()).toEqual([baseURL, `${baseURL}/legal-notice`].toSorted())
   })
 
   test('the manifest names the site and lists its icons', async ({ request }) => {

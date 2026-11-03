@@ -31,12 +31,12 @@ test('every section and every FAQ answer is readable without JavaScript', async 
   )
   await Promise.all(titleIds.map((id) => expect(page.locator(`[id="${id}"]`)).toBeVisible()))
 
-  // Every question needs its answer in the HTML, not only the one open by default.
-  const questions = await page.locator('[data-slot="accordion-trigger"]').count()
-  const answers = await page.locator('[data-slot="accordion-content"]').all()
-  expect(questions).toBeGreaterThan(0)
-  expect(answers).toHaveLength(questions)
-  await Promise.all(answers.map((answer) => expect(answer).toBeVisible()))
+  // Every answer is in the HTML, and a native disclosure opens without a script.
+  const items = page.locator('#faq details')
+  expect(await items.count()).toBeGreaterThan(0)
+  await Promise.all((await items.all()).map((item) => expect(item.locator('p')).toHaveCount(1)))
+  await items.first().locator('summary').click()
+  await expect(items.first().locator('p')).toBeVisible()
 })
 
 test("the header's links lead somewhere real", async ({ page, request }) => {

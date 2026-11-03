@@ -1,11 +1,11 @@
 import { HomeLink } from '@/components/home-link'
 import { siteConfig } from '@/config/site'
 
-// The wordmark is the site's serif, so the brand and the headings read as one voice.
+// The wordmark is the site name in the heading face.
 export function Logo() {
   return (
     <span translate="no" className="flex items-center text-foreground">
-      <span className="font-heading text-2xl leading-none font-medium tracking-tight">
+      <span className="font-heading text-3xl leading-none font-medium tracking-tighter">
         {siteConfig.name}
       </span>
     </span>

@@ -1,44 +1,34 @@
 export type Faq = { question: string; answer: string }
 
-// Plain strings, so the section and its FAQPage JSON-LD read one source. Backticks render as inline code.
+// Plain strings, so the section and its FAQPage JSON-LD read one source.
 export const faq = {
-  eyebrow: 'Questions',
-  title: 'Questions & Answers',
-  description: 'What a process agent is, what you get, what it costs, and what we need from you.',
-  contact: {
-    title: 'Still have a question?',
-    action: { label: 'Contact Us', href: '/contact' },
-  },
+  eyebrow: 'F.A.Q',
+  title: 'Questions teams ask before getting started.',
   items: [
     {
-      question: 'What is a process agent?',
+      question: 'Do we need technical skills to use AI?',
       answer:
-        'A process agent runs a whole back-office process, not one chat at a time. It starts on its own when something arrives, carries a case across days and across people, and works in your systems under a deterministic control plane, with a human approving anything consequential.',
+        'No. The systems should make work easier, not more technical. I build around how your team already operates.',
     },
     {
-      question: 'What do you actually deliver?',
+      question: 'How quickly can we see results?',
       answer:
-        'A working process in your own estate: the agent, the deterministic steps, permission-respecting retrieval, and approval gates, proved against a golden set, piloted with one team, and handed over with the code, the models, the evaluation harness, and the documentation.',
+        'Most businesses can identify quick wins early, especially in repetitive admin, internal workflows, and information handling.',
     },
     {
-      question: 'How much does it cost?',
+      question: 'Is this only for larger companies?',
       answer:
-        'Every engagement is fixed-price, set at scoping once the process is mapped. Discovery is credited into the build when the build follows within an agreed window. Platform and usage costs run on your accounts at cost, with no markup.',
+        'No. Smaller teams often benefit fastest because a few workflow improvements can save significant time every week.',
     },
     {
-      question: 'What do you need from us?',
+      question: 'What happens after the first call?',
       answer:
-        'Four roles, named: someone who owns the number, someone who grades the work, someone who owns the content, and someone from IT and security. Plus time with the people who do the work, access to the content, and a pilot team before anything goes live.',
+        'You leave with a clearer picture of where AI can help, what to prioritize first, and whether it makes sense to move forward.',
     },
     {
-      question: 'What happens after handover?',
+      question: 'Will this work for our type of business?',
       answer:
-        'Your team runs the golden set unaided and passes, and then the system is yours. Thirty days of post-handover fixes are included, and on exit we remove our access. Tune covers the 90 days after handover with weekly sampling, regression tests, and monthly reports.',
-    },
-    {
-      question: 'Do you keep our data?',
-      answer:
-        'No. There is no separate store of your data and no proprietary platform. Retrieval respects permissions. The agent sees only what each user is allowed to see, and nothing from your estate is shared with another client, except the method itself.',
+        'If your team relies on repeatable processes, shared information, and day-to-day coordination, there is usually a strong case for AI and automation.',
     },
   ] satisfies Faq[],
 }

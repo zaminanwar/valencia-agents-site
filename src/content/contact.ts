@@ -1,23 +1,23 @@
-// Placeholder until the real contact address is decided. Deliberately in
-// the reserved .example domain so it cannot receive mail, and flagged on
-// the page as a placeholder.
-export const CONTACT_EMAIL = 'hello@valencia-agents.example'
-
-export const contact = {
-  hero: {
-    eyebrow: 'Get In Touch',
-    title: 'Tell us about a process.',
-    ledes: [
-      'One process, one owner, one number, and an honest walkthrough of how the work runs today, is where every engagement starts.',
-      'No bookings framing, no promised turnaround. We reply on our own timeline.',
-    ],
-  },
+export const contactContent = {
+  eyebrow: 'Contact',
+  title: 'Let’s find the fastest way AI can reduce friction in your business.',
+  description:
+    'Book a first call and I will help you identify where AI can save time, simplify operations, and create the biggest immediate gains. You’ll receive:',
+  points: [
+    'The best AI opportunities for your business',
+    'Clear priorities instead of vague ideas',
+    'A practical roadmap for next steps',
+  ],
+  action: { label: 'Book your strategy call', href: 'mailto:hello@valencia-agents.example' },
   form: {
-    eyebrow: 'The Form',
-    title: 'Write To Us',
+    name: { label: 'Name', placeholder: 'Jane Dupont' },
+    email: { label: 'Email', placeholder: 'janedupont@example.com' },
+    job: { label: 'Job', placeholder: 'Manager' },
+    company: { label: 'Company', placeholder: 'Dupont Company' },
+    message: { label: 'Message', placeholder: 'Your message' },
+    submit: 'Submit',
+    subject: 'A strategy call with Valencia Agents',
+    // The form has no backend: Submit opens the message as a draft in the visitor's mail app.
+    note: 'Submit opens this message as a draft in your mail app. Nothing is stored here.',
   },
-  formNote:
-    'This form sends nothing itself. It composes a draft you can open in your mail app, or copy as text. No backend, no database, no tracking.',
-  placeholderNote:
-    'Placeholder address: hello@valencia-agents.example. The real contact address has not been decided yet, so please do not expect a reply at this address. The draft below is yours to send wherever you reach us.',
 }

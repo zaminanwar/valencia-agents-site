@@ -33,18 +33,6 @@ for (const reducedMotion of ['no-preference', 'reduce'] as const) {
   })
 }
 
-test('the theme toggle and the D key switch the theme', async ({ page }) => {
-  await page.goto('/')
-  const isDark = () => page.evaluate(() => document.documentElement.classList.contains('dark'))
-  const startsDark = await isDark()
-
-  await page.getByRole('button', { name: 'Toggle Theme' }).click()
-  await expect.poll(isDark).toBe(!startsDark)
-
-  await page.keyboard.press('d')
-  await expect.poll(isDark).toBe(startsDark)
-})
-
 test('the logo scrolls back to the top of the home page', async ({ page }) => {
   await page.goto('/')
   await page.mouse.wheel(0, 3000)
@@ -57,8 +45,8 @@ test('the logo scrolls back to the top of the home page', async ({ page }) => {
 test('a footer link jumps straight to its section', async ({ page }) => {
   await page.goto('/')
   const link = page
-    .getByRole('navigation', { name: 'Site' })
-    .getByRole('link', { name: 'Questions & Answers' })
+    .getByRole('navigation', { name: 'Navigation' })
+    .getByRole('link', { name: 'F.A.Q' })
 
   // Every scroll position for a second after the click: a smooth scroll passes through many, a jump through one.
   const positions = await link.evaluate(
@@ -92,7 +80,6 @@ for (const width of [768, 820, 1024, 1280]) {
       [banner.getByRole('link', { name: siteConfig.name, exact: true })],
       [nav],
       [
-        banner.getByRole('button', { name: 'Pause Animations' }),
         banner.getByRole('link', { name: headerAction.label, exact: true }),
         banner.getByRole('button', { name: 'Open Menu' }),
       ],
@@ -148,7 +135,7 @@ test.describe('on a phone', () => {
     await expect(trigger).toBeFocused()
 
     await trigger.click()
-    await menu.getByRole('link', { name: 'Questions & Answers' }).click()
+    await menu.getByRole('link', { name: 'F.A.Q' }).click()
     await expect(menu).toBeHidden()
     await expect(page).toHaveURL(/#faq$/)
     await expect(page.locator('#faq-title')).toBeInViewport()

@@ -4,9 +4,8 @@ import { afterEach, vi } from 'vitest'
 
 // next/font only runs inside the Next compiler, so tests get a stand-in with the same shape.
 vi.mock('next/font/google', () => ({
-  Newsreader: () => ({ className: 'font-newsreader', variable: '--font-serif' }),
-  IBM_Plex_Sans: () => ({ className: 'font-plex', variable: '--font-sans' }),
-  IBM_Plex_Mono: () => ({ className: 'font-plex-mono', variable: '--font-mono' }),
+  Space_Grotesk: () => ({ className: 'font-grotesk', variable: '--font-heading' }),
+  Instrument_Sans: () => ({ className: 'font-instrument', variable: '--font-sans' }),
 }))
 
 function noop() {}
