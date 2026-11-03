@@ -1,6 +1,5 @@
-import Image from 'next/image'
-
 import { CtaLink } from '@/components/cta-link'
+import { HeroVisual } from '@/components/hero-visual'
 import { Eyebrow } from '@/components/section'
 import { heroContent } from '@/content/hero'
 import { cn } from '@/lib/utils'
@@ -18,7 +17,7 @@ export function Hero() {
           </div>
           <h1
             id="hero-title"
-            className="animate-rise font-heading text-4xl leading-10 font-medium tracking-tighter text-pretty delay-75 motion-reduce:animate-none sm:text-6xl sm:leading-16"
+            className="animate-rise font-heading text-5xl leading-none tracking-tight text-pretty delay-75 motion-reduce:animate-none sm:text-7xl"
           >
             {heroContent.title}
           </h1>
@@ -36,13 +35,7 @@ export function Hero() {
         </div>
 
         <div className="relative mx-auto w-full max-w-lg animate-rise-fade delay-300 motion-reduce:animate-none lg:max-w-none">
-          <Image
-            src={heroContent.image.src}
-            alt={heroContent.image.alt}
-            priority
-            sizes="(min-width: 1024px) 504px, 100vw"
-            className="aspect-square w-full rounded-3xl border-4 border-muted object-cover"
-          />
+          <HeroVisual />
           {heroContent.chips.map((chip, index) => (
             <div
               key={chip.title}

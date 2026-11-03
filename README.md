@@ -4,8 +4,9 @@ The website for Valencia Agents, an AI consultancy in formation.
 
 The design replicates the Consultia template for Framer, a free template by
 Yohann Varillon Design, rebuilt as a Next.js site so the code, the tests and the
-deploy stay ours. The copy and the photos are still the template's placeholders
-until the real ones replace them.
+deploy stay ours. The copy is the template's, rewritten in the firm's voice, and the
+problem and benefit photos are the template's stock pictures until real ones
+replace them.
 
 Live at https://valencia-agents-site-pj6uhtqcuq-uc.a.run.app. The site is
 not indexed yet: it serves a noindex header until launch.

@@ -16,7 +16,7 @@ export function Faq() {
         <div className="flex w-full max-w-xl flex-col gap-3">
           {faq.items.map((item) => (
             <details key={item.question} className="group reveal rounded-xl bg-muted">
-              <summary className="flex cursor-pointer items-center justify-between gap-4 rounded-xl px-4 py-3 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none">
+              <summary className="flex cursor-pointer items-center justify-between gap-4 rounded-xl px-4 py-3 transition-colors hover:bg-accent focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none">
                 <h3 className="text-base font-normal tracking-tight">{item.question}</h3>
                 <PlusIcon
                   aria-hidden="true"

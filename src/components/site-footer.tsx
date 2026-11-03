@@ -21,7 +21,7 @@ export function SiteFooter() {
             const titleId = `footer-${column.title.toLowerCase().replaceAll(' ', '-')}`
             return (
               <nav key={column.title} aria-labelledby={titleId} className="flex flex-col gap-5">
-                <h2 id={titleId} className="font-heading text-xl font-medium tracking-tighter">
+                <h2 id={titleId} className="font-heading text-2xl leading-none tracking-tight">
                   {column.title}
                 </h2>
                 <ul className="flex flex-col gap-3">
