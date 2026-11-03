@@ -1,16 +1,15 @@
 import { describe, expect, it } from 'vitest'
 
 import { aboutContent } from '@/content/about'
-import { benefitsContent } from '@/content/benefits'
 import { contactContent } from '@/content/contact'
 import { faq } from '@/content/faq'
 import { heroContent } from '@/content/hero'
 import { legalNotice } from '@/content/legal-notice'
 import { footerColumns, footerNote, headerAction, headerNav, mobileNav } from '@/content/navigation'
 import { notFound } from '@/content/not-found'
-import { problemContent } from '@/content/problem'
 import { processContent } from '@/content/process'
 import { servicesContent } from '@/content/services'
+import { useCasesContent } from '@/content/use-cases'
 
 // Built from code points, so the rule against dashes holds in this file too.
 const DASHES = new RegExp(`[${String.fromCharCode(0x2013, 0x2014)}]`)
@@ -25,8 +24,7 @@ function strings(value: unknown): string[] {
 
 const sections = [
   heroContent,
-  problemContent,
-  benefitsContent,
+  useCasesContent,
   servicesContent,
   processContent,
   aboutContent,
@@ -44,8 +42,10 @@ const labels = [
   notFound.action.label,
   heroContent.primaryAction.label,
   heroContent.secondaryAction.label,
-  servicesContent.action.label,
+  useCasesContent.action.label,
   processContent.action.label,
+  ...useCasesContent.items.map((item) => item.title),
+  ...servicesContent.items.map((item) => item.title),
   contactContent.action.label,
   contactContent.form.submit,
   ...mobileNav.map((link) => link.label),

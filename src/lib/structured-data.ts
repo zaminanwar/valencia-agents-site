@@ -9,6 +9,7 @@ export function siteSchemas() {
     '@type': 'Organization',
     name: siteConfig.author.name,
     url,
+    areaServed: siteConfig.area,
   }
 
   return [

@@ -1,11 +1,19 @@
 export const aboutContent = {
   eyebrow: 'About us',
-  title: 'Practical AI guidance for growing teams.',
+  title: 'Engineers first. Our biggest advantage is understanding your work.',
   card: {
-    title: 'We help teams adopt AI without making the work more complicated.',
-    body: 'Our focus is simple: solve operational problems with tools your team will actually use. That means less wasted time, fewer vague experiments, and more practical systems that fit the way your business already works.',
-    role: 'Valencia Agents, an AI consultancy in formation',
+    title: 'Over 30 years of engineering experience, now applied to AI.',
+    paragraphs: [
+      'Our talent holds over 30 years of engineering experience across the aerospace, railway, manufacturing, transportation, structural, power generation, and power transmission industries, making our ability to understand your work our biggest advantage.',
+      'Our consultants have delivered a collective seven figures in annual recurring savings within engineering departments in the Sacramento area across prior roles, including at Fortune 100 and Fortune 500 companies.',
+      'We choose to operate locally and in person in the Sacramento area. A necessary part of any successful engagement is to put boots on the ground where the work is actually getting done.',
+    ],
+    role: 'Valencia Agents, Sacramento',
   },
-  // No invented quotes: the first client words go here when there are clients to quote.
-  note: 'We are a new firm, so there are no client quotes here yet. We would rather show none than invent one.',
+  // The proof strip under the card.
+  facts: [
+    { figure: '30+', label: 'years of engineering experience' },
+    { figure: '7 figures', label: 'in annual recurring savings, across prior roles' },
+    { figure: 'Fortune 100', label: 'and Fortune 500 engineering departments served' },
+  ],
 }
