@@ -1,13 +1,11 @@
-import { ListChecksIcon, SearchIcon, ShieldIcon, WrenchIcon } from 'lucide-react'
-
 export const services = {
   hero: {
-    eyebrow: { icon: WrenchIcon, lead: 'What We', emphasis: 'Offer' },
+    eyebrow: 'What We Offer',
     title: 'Two offers, one process at a time.',
     lede: 'Consulting that answers whether a process can and should be built, and done-for-you implementation that builds it and hands it over.',
   },
   discovery: {
-    eyebrow: { icon: SearchIcon, lead: '01', emphasis: 'Discovery' },
+    eyebrow: 'Discovery',
     title: 'Fixed-Price Consulting',
     description:
       'Whether it can and should be built, answered before anyone commits to building it.',
@@ -36,7 +34,7 @@ export const services = {
     closing: 'Discovery is credited into the build when the build follows within an agreed window.',
   },
   implementation: {
-    eyebrow: { icon: WrenchIcon, lead: '02', emphasis: 'Implementation' },
+    eyebrow: 'Implementation',
     title: 'Build Is Fixed-Price',
     description: 'Proved before it goes live, then handed over.',
     paragraphs: [
@@ -47,7 +45,7 @@ export const services = {
     ],
   },
   includes: {
-    eyebrow: { icon: ListChecksIcon, lead: '03', emphasis: 'Every Engagement Includes' },
+    eyebrow: 'Every Engagement Includes',
     title: 'Built In Your Estate, Yours To Keep',
     items: [
       {
@@ -69,7 +67,7 @@ export const services = {
     ],
   },
   refusals: {
-    eyebrow: { icon: ShieldIcon, lead: '04', emphasis: 'What We Do Not Do' },
+    eyebrow: 'What We Do Not Do',
     title: 'The Lines We Hold',
     items: [
       'No auto-writes on a first engagement.',

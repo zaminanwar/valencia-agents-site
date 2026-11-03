@@ -1,24 +1,16 @@
-import { Section, SectionHeading } from '@/components/section'
+import { Prose, Section, SectionTitle } from '@/components/section'
 import { gap } from '@/content/gap'
 
 export function Gap() {
   return (
-    <Section id="gap">
-      <div className="mx-auto flex max-w-6xl flex-col gap-14">
-        <SectionHeading
-          sectionId="gap"
-          eyebrow={gap.eyebrow}
-          title={gap.title}
-          description={gap.description}
-        />
-        <div className="mx-auto flex max-w-2xl flex-col gap-4">
-          {gap.paragraphs.map((paragraph) => (
-            <p key={paragraph} className="text-pretty text-muted-foreground sm:text-lg">
-              {paragraph}
-            </p>
-          ))}
-        </div>
+    <Section id="gap" number="01" label={gap.eyebrow}>
+      <div className="flex reveal flex-col gap-6">
+        <SectionTitle sectionId="gap">{gap.title}</SectionTitle>
+        <p className="max-w-3xl font-heading text-2xl leading-snug text-pretty sm:text-3xl">
+          {gap.statement}
+        </p>
       </div>
+      <Prose paragraphs={gap.paragraphs} />
     </Section>
   )
 }

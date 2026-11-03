@@ -1,17 +1,12 @@
-import { Syne } from 'next/font/google'
-
 import { HomeLink } from '@/components/home-link'
 import { siteConfig } from '@/config/site'
-import { cn } from '@/lib/utils'
 
-// Syne is loaded here for the wordmark alone, so a preset's font change leaves the brand as it is.
-const wordmark = Syne({ subsets: ['latin'], weight: '700' })
-
+// The wordmark is the site's serif, so the brand and the headings read as one voice.
 export function Logo() {
   return (
-    <span translate="no" className="flex items-center gap-2 text-foreground">
-      <span className={cn(wordmark.className, 'text-2xl leading-none tracking-tight')}>
-        Valencia Agents
+    <span translate="no" className="flex items-center text-foreground">
+      <span className="font-heading text-2xl leading-none font-medium tracking-tight">
+        {siteConfig.name}
       </span>
     </span>
   )
@@ -26,16 +21,5 @@ export function LogoLink() {
     >
       <Logo />
     </HomeLink>
-  )
-}
-
-// The wordmark as one SVG, so it scales with its container instead of a font size.
-export function Wordmark() {
-  return (
-    <svg viewBox="0 0 476 120" aria-hidden="true" className="w-full fill-current">
-      <text x="8" y="84" fontSize="44" className={wordmark.className}>
-        Valencia Agents
-      </text>
-    </svg>
   )
 }

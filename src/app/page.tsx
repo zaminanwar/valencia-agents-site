@@ -1,9 +1,12 @@
-import { Cta } from '@/components/cta'
+import { Closing } from '@/components/closing'
 import { Faq } from '@/components/faq'
-import { Features } from '@/components/features'
+import { Fit } from '@/components/fit'
 import { Gap } from '@/components/gap'
 import { Hero } from '@/components/hero'
-import { Steps } from '@/components/steps'
+import { Method } from '@/components/method'
+import { NewFirm } from '@/components/new-firm'
+import { ProcessAgent } from '@/components/process-agent'
+import { Refusals } from '@/components/refusals'
 import { createMetadata } from '@/lib/metadata'
 
 export const metadata = createMetadata({ path: '/' })
@@ -13,10 +16,13 @@ export default function Home() {
     <>
       <Hero />
       <Gap />
-      <Features />
-      <Steps />
+      <ProcessAgent />
+      <Fit />
+      <Method />
+      <Refusals />
+      <NewFirm />
       <Faq />
-      <Cta />
+      <Closing />
     </>
   )
 }

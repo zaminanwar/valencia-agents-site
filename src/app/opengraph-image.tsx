@@ -10,7 +10,7 @@ export const contentType = OG_CONTENT_TYPE
 export default function Image() {
   return createOgImage({
     title: hero.title,
-    eyebrow: `${hero.eyebrow.lead} ${hero.eyebrow.emphasis}`,
+    eyebrow: hero.eyebrow,
     description: siteConfig.tagline,
     cta: headerAction.label,
   })

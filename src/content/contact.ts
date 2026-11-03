@@ -1,5 +1,3 @@
-import { MailIcon } from 'lucide-react'
-
 // Placeholder until the real contact address is decided. Deliberately in
 // the reserved .example domain so it cannot receive mail, and flagged on
 // the page as a placeholder.
@@ -7,7 +5,7 @@ export const CONTACT_EMAIL = 'hello@valencia-agents.example'
 
 export const contact = {
   hero: {
-    eyebrow: { icon: MailIcon, lead: 'Get In', emphasis: 'Touch' },
+    eyebrow: 'Get In Touch',
     title: 'Tell us about a process.',
     ledes: [
       'One process, one owner, one number, and an honest walkthrough of how the work runs today, is where every engagement starts.',
@@ -15,7 +13,7 @@ export const contact = {
     ],
   },
   form: {
-    eyebrow: { icon: MailIcon, lead: 'The', emphasis: 'Form' },
+    eyebrow: 'The Form',
     title: 'Write To Us',
   },
   formNote:

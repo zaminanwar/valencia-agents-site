@@ -45,7 +45,7 @@ export function ContactForm() {
   return (
     <div className="flex max-w-2xl flex-col gap-6">
       <p className="text-pretty text-muted-foreground">{contact.formNote}</p>
-      <div className="border-l-4 border-primary bg-card p-5">
+      <div className="border-l-2 border-primary bg-card p-5">
         <p className="text-pretty text-muted-foreground">{contact.placeholderNote}</p>
       </div>
 
@@ -90,7 +90,7 @@ export function ContactForm() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <h3 className="font-heading font-semibold">Draft Preview</h3>
+        <h3 className="font-medium">Draft Preview</h3>
         <pre className="overflow-x-auto rounded-lg border bg-card p-5 text-sm whitespace-pre-wrap">
           {`To: ${CONTACT_EMAIL}\nSubject: Valencia Agents: A Process To Talk About\n\n${draft}`}
         </pre>

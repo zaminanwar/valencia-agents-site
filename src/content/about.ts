@@ -1,13 +1,11 @@
-import { BookOpenIcon, EyeIcon, ShieldIcon } from 'lucide-react'
-
 export const about = {
   hero: {
-    eyebrow: { icon: BookOpenIcon, lead: 'About', emphasis: 'Valencia Agents' },
+    eyebrow: 'About Valencia Agents',
     title: 'A consultancy in formation.',
     lede: 'Valencia Agents is a consultancy in formation. A forward-deployed boutique: small, embedded, and accountable for a working process, not a strategy deck, not a platform subscription, not a body shop.',
   },
   whatWeDo: {
-    eyebrow: { icon: BookOpenIcon, lead: '01', emphasis: 'What We Do' },
+    eyebrow: 'What We Do',
     title: 'We Build Agentic Workflows That Run Back-Office Processes',
     paragraphs: [
       'Work that means reading, synthesizing, judging, and deciding from documents and systems. We build them inside your own estate, under human approval, and then we hand them over. You own the system, the code, the models, and the evaluation harness.',
@@ -15,7 +13,7 @@ export const about = {
     ],
   },
   notList: {
-    eyebrow: { icon: ShieldIcon, lead: '02', emphasis: 'What We Are Not' },
+    eyebrow: 'What We Are Not',
     title: 'Not A Product, Not A Body Shop, Not A Deck',
     items: [
       {
@@ -37,7 +35,7 @@ export const about = {
     ],
   },
   honestly: {
-    eyebrow: { icon: EyeIcon, lead: '03', emphasis: 'Honestly Stated' },
+    eyebrow: 'Honestly Stated',
     title: 'This Firm Is New, Judge The Method',
     paragraphs: [
       'There are no clients, case studies, or results to show yet, and this site claims none. What there is to judge is the method: the seven-stage arc, the guarantees and refusals, and the handover promise, all written out on the How We Work page.',

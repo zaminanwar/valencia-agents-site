@@ -9,17 +9,18 @@ import { readRootTokens, toHex } from '@/lib/theme-tokens'
 export const OG_SIZE = { width: 1200, height: 630 }
 export const OG_CONTENT_TYPE = 'image/png'
 
-// The card's typeface. A preset that changes the font in src/app/layout.tsx needs it changed here too.
-const FONT = 'Oxanium'
+// The card's typefaces, the pair src/app/layout.tsx loads: the serif for the headline and the wordmark, the sans for the rest.
+const FONT = 'IBM Plex Sans'
+const HEADING_FONT = 'Newsreader'
 
-// The light theme of preset b4Wm, for a token that is missing or cannot be converted.
+// The light theme's values, for a token that is missing or cannot be converted.
 const FALLBACK = {
-  background: '#ffffff',
-  foreground: '#0a0a0a',
-  'muted-foreground': '#737373',
-  border: '#e5e5e5',
-  primary: '#171717',
-  'primary-foreground': '#fafafa',
+  background: '#fbfaf8',
+  foreground: '#1f2a2c',
+  'muted-foreground': '#5f686b',
+  border: '#d6d3cd',
+  primary: '#2f5f5c',
+  'primary-foreground': '#fbfaf8',
 }
 
 type Palette = {
@@ -29,7 +30,6 @@ type Palette = {
   border: string
   primary: string
   primaryForeground: string
-  radius: number
 }
 
 // Satori resolves no CSS variables, so the card reads the light theme from globals.css and follows a preset like the page.
@@ -40,7 +40,6 @@ function getPalette(): Promise<Palette> {
     (css) => {
       const tokens = readRootTokens(css)
       const colour = (name: keyof typeof FALLBACK) => toHex(tokens[name] ?? '') ?? FALLBACK[name]
-      const radius = Number.parseFloat(tokens.radius ?? '')
 
       return {
         background: colour('background'),
@@ -49,19 +48,10 @@ function getPalette(): Promise<Palette> {
         border: colour('border'),
         primary: colour('primary'),
         primaryForeground: colour('primary-foreground'),
-        // The page's radius at 16px a rem, a fifth larger on the 1200px card.
-        radius: Number.isFinite(radius) ? Math.round(radius * 19.2) : 12,
       }
     },
   )
   return palettePromise
-}
-
-function withAlpha(hex: string, alpha: number): string {
-  const [red, green, blue] = [1, 3, 5].map((start) =>
-    Number.parseInt(hex.slice(start, start + 2), 16),
-  )
-  return `rgba(${red},${green},${blue},${alpha})`
 }
 
 // An error page is not a font, so a failed response throws and the fonts fall back.
@@ -84,21 +74,19 @@ async function loadGoogleFont(family: string, weight: number): Promise<ArrayBuff
   return fetchOk(src).then((response) => response.arrayBuffer())
 }
 
-type LoadedFont = { name: string; data: ArrayBuffer; weight: 400 | 700; style: 'normal' }
+type LoadedFont = { name: string; data: ArrayBuffer; weight: 400 | 500; style: 'normal' }
 
 let fontsPromise: Promise<LoadedFont[]> | null = null
 
 function getFonts(): Promise<LoadedFont[]> {
   fontsPromise ??= (async () => {
     try {
-      const [heading, brand, regular] = await Promise.all([
-        loadGoogleFont(FONT, 700),
-        loadGoogleFont('Syne', 700),
+      const [heading, regular] = await Promise.all([
+        loadGoogleFont(HEADING_FONT, 500),
         loadGoogleFont(FONT, 400),
       ])
       return [
-        { name: FONT, data: heading, weight: 700, style: 'normal' },
-        { name: 'Syne', data: brand, weight: 700, style: 'normal' },
+        { name: HEADING_FONT, data: heading, weight: 500, style: 'normal' },
         { name: FONT, data: regular, weight: 400, style: 'normal' },
       ] satisfies LoadedFont[]
     } catch {
@@ -139,39 +127,32 @@ export async function createOgImage({ title, eyebrow, description, cta }: OgImag
         flexDirection: 'column',
         justifyContent: 'space-between',
         backgroundColor: palette.background,
-        backgroundImage: `radial-gradient(circle at 88% 6%, ${withAlpha(palette.primary, 0.07)}, transparent 42%), radial-gradient(circle at 4% 100%, ${withAlpha(palette.foreground, 0.05)}, transparent 38%)`,
         padding: 72,
         fontFamily: FONT,
         color: palette.foreground,
       }}
     >
-      {/* The mark, oversized and faint, so the card reads as Valencia Agents even at timeline size. */}
-      <img
-        src={mark}
-        width={520}
-        height={520}
-        alt=""
-        style={{ position: 'absolute', top: 120, right: -110, opacity: 0.06 }}
-      />
-
       <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
         <img src={mark} width={40} height={40} alt="" />
-        <span style={{ fontFamily: 'Syne', fontWeight: 700, fontSize: 34 }}>Valencia Agents</span>
+        <span style={{ fontFamily: HEADING_FONT, fontWeight: 500, fontSize: 36 }}>
+          Valencia Agents
+        </span>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
         {eyebrow ? (
-          <span style={{ fontWeight: 400, fontSize: 22, letterSpacing: 3, color: palette.muted }}>
+          <span style={{ fontWeight: 400, fontSize: 20, letterSpacing: 3, color: palette.muted }}>
             {eyebrow.slice(0, 40).toUpperCase()}
           </span>
         ) : null}
         <span
           style={{
-            fontWeight: 700,
-            fontSize: 64,
-            lineHeight: 1.08,
-            letterSpacing: -2.5,
-            maxWidth: 1056,
+            fontFamily: HEADING_FONT,
+            fontWeight: 500,
+            fontSize: 66,
+            lineHeight: 1.05,
+            letterSpacing: -1.5,
+            maxWidth: 1000,
           }}
         >
           {title}
@@ -180,10 +161,10 @@ export async function createOgImage({ title, eyebrow, description, cta }: OgImag
           <span
             style={{
               fontWeight: 400,
-              fontSize: 25,
+              fontSize: 26,
               lineHeight: 1.45,
               color: palette.muted,
-              maxWidth: 1056,
+              maxWidth: 900,
             }}
           >
             {description.slice(0, 120)}
@@ -191,35 +172,19 @@ export async function createOgImage({ title, eyebrow, description, cta }: OgImag
         ) : null}
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            backgroundColor: palette.primary,
-            color: palette.primaryForeground,
-            borderRadius: palette.radius,
-            padding: '16px 28px',
-            fontWeight: 700,
-            fontSize: 24,
-          }}
-        >
-          {cta.slice(0, 36)}
-        </div>
-        <span style={{ fontWeight: 400, fontSize: 24, color: palette.muted }}>{domain}</span>
-      </div>
-
-      {/* A rule along the bottom edge, so the card holds its shape on white timelines. */}
       <div
         style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          width: '100%',
-          height: 10,
-          backgroundImage: `linear-gradient(90deg, ${palette.foreground}, ${palette.border})`,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          borderTop: `2px solid ${palette.border}`,
+          paddingTop: 28,
+          fontSize: 24,
         }}
-      />
+      >
+        <span style={{ color: palette.primary }}>{cta.slice(0, 36)}</span>
+        <span style={{ color: palette.muted }}>{domain}</span>
+      </div>
     </div>,
     { ...OG_SIZE, ...(fonts.length ? { fonts } : {}) },
   )

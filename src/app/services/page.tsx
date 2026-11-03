@@ -1,6 +1,7 @@
 import { ButtonLink } from '@/components/button-link'
 import { PageHero } from '@/components/page-hero'
 import { PageSection } from '@/components/page-section'
+import { Prose, RuledList } from '@/components/section'
 import { services } from '@/content/services'
 import { createMetadata } from '@/lib/metadata'
 
@@ -23,74 +24,54 @@ export default function Services() {
 
       <PageSection
         id="discovery"
+        number="01"
         eyebrow={services.discovery.eyebrow}
         title={services.discovery.title}
         description={services.discovery.description}
       >
-        <ul className="grid gap-5 sm:grid-cols-2">
-          {services.discovery.outputs.map((output) => (
-            <li key={output.title} className="flex flex-col gap-1.5 rounded-2xl border bg-card p-6">
-              <h3 className="font-heading font-semibold">{output.title}</h3>
-              <p className="text-sm text-pretty text-muted-foreground">{output.body}</p>
-            </li>
-          ))}
-        </ul>
-        <p className="max-w-2xl text-pretty text-muted-foreground sm:text-lg">
-          {services.discovery.closing}
-        </p>
+        <RuledList items={services.discovery.outputs} />
+        <Prose paragraphs={[services.discovery.closing]} />
       </PageSection>
 
       <PageSection
         id="implementation"
+        number="02"
         eyebrow={services.implementation.eyebrow}
         title={services.implementation.title}
         description={services.implementation.description}
       >
-        <div className="flex max-w-2xl flex-col gap-4">
-          {services.implementation.paragraphs.map((paragraph) => (
-            <p key={paragraph} className="text-pretty text-muted-foreground sm:text-lg">
-              {paragraph}
-            </p>
-          ))}
-        </div>
+        <Prose paragraphs={services.implementation.paragraphs} />
       </PageSection>
 
       <PageSection
         id="includes"
+        number="03"
         eyebrow={services.includes.eyebrow}
         title={services.includes.title}
       >
-        <ul className="grid gap-5 sm:grid-cols-2">
-          {services.includes.items.map((item) => (
-            <li key={item.title} className="flex flex-col gap-1.5 rounded-2xl border bg-card p-6">
-              <h3 className="font-heading font-semibold">{item.title}</h3>
-              <p className="text-sm text-pretty text-muted-foreground">{item.body}</p>
-            </li>
-          ))}
-        </ul>
+        <RuledList items={services.includes.items} />
       </PageSection>
 
       <PageSection
         id="refusals"
+        number="04"
         eyebrow={services.refusals.eyebrow}
         title={services.refusals.title}
       >
-        <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid gap-x-8 sm:grid-cols-2">
           {services.refusals.items.map((item) => (
-            <li key={item} className="rounded-2xl border bg-card p-6">
-              <h3 className="font-heading font-semibold">{item}</h3>
+            <li key={item} className="reveal border-t py-4">
+              <h3 className="font-heading text-xl font-medium text-pretty">{item}</h3>
             </li>
           ))}
         </ul>
-        <p className="max-w-2xl text-pretty text-muted-foreground sm:text-lg">
-          {services.refusals.closing}
-        </p>
+        <Prose paragraphs={[services.refusals.closing]} />
         <div className="flex flex-wrap gap-3">
-          <ButtonLink href="/how-we-work" size="lg">
-            Read The Method
+          <ButtonLink href="/contact" size="lg">
+            Tell Us About A Process
           </ButtonLink>
-          <ButtonLink href="/contact" variant="secondary" size="lg">
-            Start With A Conversation
+          <ButtonLink href="/how-we-work" variant="outline" size="lg">
+            Read The Method
           </ButtonLink>
         </div>
       </PageSection>

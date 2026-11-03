@@ -5,8 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-serif);
   --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -48,72 +49,72 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.275 0.04 187.159);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.275 0.04 187.159);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.275 0.04 187.159);
-  --primary: oklch(0.511 0.086 186.391);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.275 0.04 187.159);
-  --muted: oklch(0.984 0.014 180.72);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.769 0.165 70.08);
-  --accent-foreground: oklch(0.275 0.04 187.159);
+  --background: oklch(0.985 0.004 85);
+  --foreground: oklch(0.23 0.018 200);
+  --card: oklch(0.97 0.006 85);
+  --card-foreground: oklch(0.23 0.018 200);
+  --popover: oklch(0.99 0.003 85);
+  --popover-foreground: oklch(0.23 0.018 200);
+  --primary: oklch(0.4 0.065 190);
+  --primary-foreground: oklch(0.985 0.004 85);
+  --secondary: oklch(0.94 0.008 85);
+  --secondary-foreground: oklch(0.23 0.018 200);
+  --muted: oklch(0.955 0.007 85);
+  --muted-foreground: oklch(0.47 0.015 200);
+  --accent: oklch(0.93 0.03 80);
+  --accent-foreground: oklch(0.23 0.018 200);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.511 0.086 186.391);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.275 0.04 187.159);
-  --sidebar-primary: oklch(0.511 0.086 186.391);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.984 0.014 180.72);
-  --sidebar-accent-foreground: oklch(0.275 0.04 187.159);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.511 0.086 186.391);
+  --border: oklch(0.87 0.01 85);
+  --input: oklch(0.87 0.01 85);
+  --ring: oklch(0.4 0.065 190);
+  --chart-1: oklch(0.4 0.065 190);
+  --chart-2: oklch(0.6 0.05 190);
+  --chart-3: oklch(0.75 0.04 85);
+  --chart-4: oklch(0.47 0.015 200);
+  --chart-5: oklch(0.23 0.018 200);
+  --radius: 0.25rem;
+  --sidebar: oklch(0.97 0.006 85);
+  --sidebar-foreground: oklch(0.23 0.018 200);
+  --sidebar-primary: oklch(0.4 0.065 190);
+  --sidebar-primary-foreground: oklch(0.985 0.004 85);
+  --sidebar-accent: oklch(0.93 0.03 80);
+  --sidebar-accent-foreground: oklch(0.23 0.018 200);
+  --sidebar-border: oklch(0.87 0.01 85);
+  --sidebar-ring: oklch(0.4 0.065 190);
 }
 
 .dark {
-  --background: oklch(0.275 0.04 187.159);
-  --foreground: oklch(0.984 0.014 180.72);
-  --card: oklch(0.325 0.04 187.159);
-  --card-foreground: oklch(0.984 0.014 180.72);
-  --popover: oklch(0.325 0.04 187.159);
-  --popover-foreground: oklch(0.984 0.014 180.72);
-  --primary: oklch(0.511 0.086 186.391);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.984 0.014 180.72);
-  --muted: oklch(0.325 0.04 187.159);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.769 0.165 70.08);
-  --accent-foreground: oklch(0.275 0.04 187.159);
+  --background: oklch(0.2 0.015 200);
+  --foreground: oklch(0.95 0.008 85);
+  --card: oklch(0.235 0.015 200);
+  --card-foreground: oklch(0.95 0.008 85);
+  --popover: oklch(0.235 0.015 200);
+  --popover-foreground: oklch(0.95 0.008 85);
+  --primary: oklch(0.76 0.08 185);
+  --primary-foreground: oklch(0.2 0.015 200);
+  --secondary: oklch(0.27 0.012 200);
+  --secondary-foreground: oklch(0.95 0.008 85);
+  --muted: oklch(0.255 0.012 200);
+  --muted-foreground: oklch(0.72 0.01 90);
+  --accent: oklch(0.32 0.03 80);
+  --accent-foreground: oklch(0.95 0.008 85);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
+  --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.511 0.086 186.391);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.275 0.04 187.159);
-  --sidebar-foreground: oklch(0.984 0.014 180.72);
-  --sidebar-primary: oklch(0.511 0.086 186.391);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.511 0.086 186.391);
-  --sidebar-accent-foreground: oklch(0.984 0.014 180.72);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.511 0.086 186.391);
+  --ring: oklch(0.76 0.08 185);
+  --chart-1: oklch(0.76 0.08 185);
+  --chart-2: oklch(0.6 0.05 190);
+  --chart-3: oklch(0.75 0.04 85);
+  --chart-4: oklch(0.72 0.01 90);
+  --chart-5: oklch(0.95 0.008 85);
+  --sidebar: oklch(0.235 0.015 200);
+  --sidebar-foreground: oklch(0.95 0.008 85);
+  --sidebar-primary: oklch(0.76 0.08 185);
+  --sidebar-primary-foreground: oklch(0.2 0.015 200);
+  --sidebar-accent: oklch(0.32 0.03 80);
+  --sidebar-accent-foreground: oklch(0.95 0.008 85);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(0.76 0.08 185);
 }
 
 @layer base {
@@ -197,14 +198,6 @@ header {
   }
 }
 
-html[data-motion-paused] {
-  --ambient-motion-state: paused;
-}
-
-html[data-motion-paused] :is(.shimmer, .animate-caret-blink) {
-  animation-play-state: paused;
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,
@@ -214,13 +207,19 @@ html[data-motion-paused] :is(.shimmer, .animate-caret-blink) {
   }
 }
 
-/* The landing's motion and effects. Colours, radius and fonts stay in the shadcn tokens above. */
+/* The site's motion. Colours, radius and fonts stay in the shadcn tokens above. */
 
 @layer base {
   /* Links jump straight to their section, clear of the sticky header; nothing scrolls smoothly. */
   html {
     scroll-padding-top: 5rem;
     scrollbar-gutter: stable;
+  }
+
+  /* Headings set in the serif at its display optical size. */
+  .font-heading {
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 72;
   }
 
   /* Without JavaScript the FAQ accordion cannot open, so every answer shows instead; Tailwind hides [hidden] with !important. */
@@ -231,100 +230,29 @@ html[data-motion-paused] :is(.shimmer, .animate-caret-blink) {
   }
 }
 
-@media (scripting: none) {
-  html {
-    --ambient-motion-state: paused;
-  }
-
-  [data-motion-control] {
-    display: none;
-  }
-
-  :is(.shimmer, .animate-caret-blink) {
-    animation-play-state: paused;
-  }
-}
-
 @theme {
   --animate-rise: rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   --animate-rise-fade: rise-fade 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-  --animate-float: float 7s ease-in-out infinite var(--ambient-motion-state, running);
-  --animate-marquee: marquee 60s linear infinite var(--ambient-motion-state, running);
 }
 
-/* Rises and sharpens into place without fading, so the text is never transparent. */
+/* Rises into place without fading, so the text is never transparent. */
 @keyframes rise {
   from {
-    transform: translateY(1rem);
-    filter: blur(6px);
+    transform: translateY(0.75rem);
   }
 }
 
 @keyframes rise-fade {
   from {
     opacity: 0;
-    transform: translateY(1rem);
-    filter: blur(6px);
+    transform: translateY(0.75rem);
   }
 }
 
-/* The scroll reveal only moves: a fade would leave a heading at the fold half transparent, and a blur repaints every frame. */
+/* The scroll reveal only moves: a fade would leave a heading at the fold half transparent. */
 @keyframes scroll-rise {
   from {
     transform: translateY(1rem);
-  }
-}
-
-@keyframes float {
-  50% {
-    transform: translateY(-0.5rem);
-  }
-}
-
-/* Each list moves by its own width, so the copy that follows it takes its place seamlessly. */
-@keyframes marquee {
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-/* From a bare bar at the top of the page to the glass it has everywhere else. */
-@keyframes unglass {
-  from {
-    translate: none;
-    border-color: transparent;
-    background-color: transparent;
-    backdrop-filter: none;
-    box-shadow: none;
-  }
-}
-
-@utility bg-glow {
-  background-image: radial-gradient(
-    closest-side,
-    color-mix(in oklab, var(--color-foreground) 8%, transparent),
-    transparent
-  );
-}
-
-/* The header floats down as frosted glass once the page scrolls; without scroll timelines it always floats. */
-@utility header-glass {
-  translate: 0 0.5rem;
-  border-color: color-mix(in oklab, var(--color-foreground) 10%, transparent);
-  background-color: color-mix(in oklab, var(--color-background) 60%, transparent);
-  backdrop-filter: blur(16px) saturate(1.8);
-  box-shadow:
-    var(--shadow-lg),
-    inset 0 1px 0 color-mix(in oklab, var(--color-foreground) 6%, transparent);
-
-  @supports (animation-timeline: scroll()) {
-    animation: unglass linear both;
-    animation-timeline: scroll();
-    animation-range: 0 4rem;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    translate: none;
   }
 }
 
@@ -336,231 +264,5 @@ html[data-motion-paused] :is(.shimmer, .animate-caret-blink) {
       animation-timeline: view();
       animation-range: entry 0% entry 12rem;
     }
-  }
-}
-
-/* Illustrations: calm loops for the decorative mockups. Each element's own style is the finished frame, which reduced motion keeps. */
-
-@theme {
-  --animate-swap: swap 10s linear infinite var(--ambient-motion-state, running);
-  --animate-wave: wave 4s ease-in-out infinite backwards var(--ambient-motion-state, running);
-  --animate-hop-rows: hop-rows 8s cubic-bezier(0.16, 1, 0.3, 1) infinite
-    var(--ambient-motion-state, running);
-  --animate-gauge: gauge 5s cubic-bezier(0.16, 1, 0.3, 1) infinite
-    var(--ambient-motion-state, running);
-  --animate-switch-knob: switch-knob 6s cubic-bezier(0.16, 1, 0.3, 1) infinite
-    var(--ambient-motion-state, running);
-  --animate-switch-track: switch-track 6s cubic-bezier(0.16, 1, 0.3, 1) infinite
-    var(--ambient-motion-state, running);
-  --animate-press: press 4s ease-in-out infinite var(--ambient-motion-state, running);
-  --animate-beacon: beacon 2.4s cubic-bezier(0, 0, 0.2, 1) infinite
-    var(--ambient-motion-state, running);
-  --animate-tick-1: tick-1 8s ease-out infinite var(--ambient-motion-state, running);
-  --animate-tick-2: tick-2 8s ease-out infinite var(--ambient-motion-state, running);
-  --animate-tick-3: tick-3 8s ease-out infinite var(--ambient-motion-state, running);
-}
-
-/* Items stacked in one cell take turns: each shows for a fifth of the loop, so delays two seconds apart share it. */
-@keyframes swap {
-  0% {
-    opacity: 0;
-  }
-  4%,
-  18% {
-    opacity: 1;
-  }
-  22%,
-  100% {
-    opacity: 0;
-  }
-}
-
-/* A highlight rolls along a row; before its turn each item waits dimmed. */
-@keyframes wave {
-  0%,
-  60%,
-  100% {
-    opacity: 0.5;
-    transform: none;
-  }
-  30% {
-    opacity: 1;
-    transform: scale(1.08);
-  }
-}
-
-/* A highlight walks down four 1.5rem rows. */
-@keyframes hop-rows {
-  0%,
-  20%,
-  100% {
-    transform: none;
-  }
-  25%,
-  45% {
-    transform: translateY(1.5rem);
-  }
-  50%,
-  70% {
-    transform: translateY(3rem);
-  }
-  75%,
-  95% {
-    transform: translateY(4.5rem);
-  }
-}
-
-/* A score ring fills from empty, holds full, then drains before the next run. */
-@keyframes gauge {
-  0%,
-  100% {
-    stroke-dashoffset: 100;
-  }
-  35%,
-  90% {
-    stroke-dashoffset: 0;
-  }
-}
-
-/* The JavaScript switch flips on for a moment, then back off. */
-@keyframes switch-knob {
-  0%,
-  12%,
-  100% {
-    transform: translateX(0.75rem);
-  }
-  22%,
-  88% {
-    transform: none;
-  }
-}
-
-@keyframes switch-track {
-  0%,
-  12%,
-  100% {
-    opacity: 1;
-  }
-  22%,
-  88% {
-    opacity: 0;
-  }
-}
-
-@keyframes press {
-  0%,
-  70%,
-  100% {
-    transform: none;
-  }
-  80% {
-    transform: scale(0.95);
-  }
-}
-
-@keyframes beacon {
-  0% {
-    opacity: 0.6;
-    transform: none;
-  }
-  70%,
-  100% {
-    opacity: 0;
-    transform: scale(1.6);
-  }
-}
-
-/* Each step rises on its own cue and all of them fade out together, so the loop never shows a reset. */
-@keyframes tick-1 {
-  0%,
-  10% {
-    opacity: 0;
-    transform: translateY(0.5rem);
-  }
-  15%,
-  88% {
-    opacity: 1;
-    transform: none;
-  }
-  95%,
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes tick-2 {
-  0%,
-  30% {
-    opacity: 0;
-    transform: translateY(0.5rem);
-  }
-  35%,
-  88% {
-    opacity: 1;
-    transform: none;
-  }
-  95%,
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes tick-3 {
-  0%,
-  50% {
-    opacity: 0;
-    transform: translateY(0.5rem);
-  }
-  55%,
-  88% {
-    opacity: 1;
-    transform: none;
-  }
-  95%,
-  100% {
-    opacity: 0;
-  }
-}
-
-/* The inverse theme covers the right half and its edge sways, so one card shows both themes. */
-@keyframes split {
-  0%,
-  100% {
-    clip-path: inset(0 0 0 50%);
-  }
-  25% {
-    clip-path: inset(0 0 0 36%);
-  }
-  75% {
-    clip-path: inset(0 0 0 64%);
-  }
-}
-
-@keyframes split-line {
-  0%,
-  100% {
-    translate: 50% 0;
-  }
-  25% {
-    translate: 36% 0;
-  }
-  75% {
-    translate: 64% 0;
-  }
-}
-
-@utility theme-split {
-  clip-path: inset(0 0 0 50%);
-
-  @media (prefers-reduced-motion: no-preference) {
-    animation: split 8s ease-in-out infinite var(--ambient-motion-state, running);
-  }
-}
-
-@utility theme-split-line {
-  translate: 50% 0;
-
-  @media (prefers-reduced-motion: no-preference) {
-    animation: split-line 8s ease-in-out infinite var(--ambient-motion-state, running);
   }
 }
