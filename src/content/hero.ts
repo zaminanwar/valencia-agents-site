@@ -1,19 +1,19 @@
-import { ChartNoAxesCombinedIcon, ZapIcon } from 'lucide-react'
+import { BlocksIcon, MapPinIcon } from 'lucide-react'
 
 export const heroContent = {
-  eyebrow: 'AI consultancy',
-  title: 'AI consulting for modern businesses.',
+  eyebrow: 'In person in the Sacramento area',
+  title: 'AI consulting for engineering departments in the Sacramento area.',
   description:
-    'We help small service teams turn repetitive work, scattered information, and slow workflows into simple AI-powered systems they will actually use.',
+    'We help mechanical, electrical, and civil engineering teams bring AI into their document-heavy processes.',
   primaryAction: { label: 'Book a strategy call', href: '/#contact' },
-  secondaryAction: { label: 'Explore services', href: '/#services' },
-  // The two chips that float over the photo.
+  secondaryAction: { label: 'See the use cases', href: '/#use-cases' },
+  // The two chips that float over the illustration.
   chips: [
     {
-      icon: ChartNoAxesCombinedIcon,
-      title: 'Reduce admin overload',
-      detail: 'With practical AI systems',
+      icon: BlocksIcon,
+      title: 'On the tools you already have',
+      detail: 'Microsoft, Google, OpenAI and more',
     },
-    { icon: ZapIcon, title: 'Move faster', detail: 'AI consulting for service teams' },
+    { icon: MapPinIcon, title: 'Boots on the ground', detail: 'Local and in person in Sacramento' },
   ],
 }

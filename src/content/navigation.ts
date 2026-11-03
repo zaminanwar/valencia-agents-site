@@ -4,6 +4,7 @@ export type NavLink = { label: string; href: string; external?: boolean }
 export const headerAction = { label: 'Book a strategy call', href: '/#contact' }
 
 export const headerNav: NavLink[] = [
+  { label: 'Use cases', href: '/#use-cases' },
   { label: 'Services', href: '/#services' },
   { label: 'How it works', href: '/#how-it-works' },
   { label: 'About', href: '/#about' },
@@ -33,7 +34,7 @@ export const footerColumns: { title: string; links: NavLink[] }[] = [
 ]
 
 export const footerNote = {
-  tagline: 'AI consulting for modern businesses.',
+  tagline: 'AI consulting for engineering departments in the Sacramento area.',
   line: '2026 Valencia Agents. All rights reserved.',
   legal: { label: 'Legal Notice', href: '/legal-notice' },
 }

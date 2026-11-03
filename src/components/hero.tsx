@@ -17,7 +17,7 @@ export function Hero() {
           </div>
           <h1
             id="hero-title"
-            className="animate-rise font-heading text-5xl leading-none tracking-tight text-pretty delay-75 motion-reduce:animate-none sm:text-7xl"
+            className="animate-rise font-heading text-5xl leading-none tracking-tight text-pretty delay-75 motion-reduce:animate-none sm:text-6xl"
           >
             {heroContent.title}
           </h1>

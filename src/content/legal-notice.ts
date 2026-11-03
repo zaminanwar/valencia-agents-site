@@ -6,10 +6,10 @@ export const legalNotice = {
       lines: [
         'Business name: Valencia Agents',
         'Legal status: Company',
-        'Registered address: 123 Street, Valencia, 46000',
+        'Registered address: to be confirmed, Sacramento, CA',
         'VAT number: 123456789',
         'Email: hello@valencia-agents.example',
-        'Phone: +34 123 456 789',
+        'Phone: to be confirmed',
         'Publication director: to be confirmed',
       ],
     },

@@ -1,10 +1,10 @@
 export const contactContent = {
   eyebrow: 'Contact',
-  title: 'Let’s find the fastest way AI can reduce friction in your business.',
+  title: 'Let’s find the fastest way AI can reduce friction in your engineering department.',
   description:
-    'Book a first call and we will help you identify where AI can save time, simplify operations, and create the biggest immediate gains. You’ll receive:',
+    'Book a first call and we will help you identify where AI can save time, simplify operations, and create the biggest immediate gains. We are local to the Sacramento area and happy to meet in person. You’ll receive:',
   points: [
-    'The best AI opportunities for your business',
+    'The best AI opportunities for your department',
     'Clear priorities instead of vague ideas',
     'A practical roadmap for next steps',
   ],
@@ -12,8 +12,8 @@ export const contactContent = {
   form: {
     name: { label: 'Name', placeholder: 'Jane Dupont' },
     email: { label: 'Email', placeholder: 'janedupont@example.com' },
-    job: { label: 'Job', placeholder: 'Manager' },
-    company: { label: 'Company', placeholder: 'Dupont Company' },
+    job: { label: 'Job', placeholder: 'Engineering manager' },
+    company: { label: 'Company', placeholder: 'Dupont Engineering' },
     message: { label: 'Message', placeholder: 'Your message' },
     submit: 'Submit',
     subject: 'A strategy call with Valencia Agents',

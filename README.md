@@ -1,12 +1,11 @@
 # Valencia Agents site
 
-The website for Valencia Agents, an AI consultancy in formation.
+The website for Valencia Agents, an AI consultancy for engineering departments
+in the Sacramento area.
 
-The design replicates the Consultia template for Framer, a free template by
-Yohann Varillon Design, rebuilt as a Next.js site so the code, the tests and the
-deploy stay ours. The copy is the template's, rewritten in the firm's voice, and the
-problem and benefit photos are the template's stock pictures until real ones
-replace them.
+The design began as a replica of the Consultia template for Framer, a free
+template by Yohann Varillon Design, rebuilt as a Next.js site so the code, the
+tests and the deploy stay ours. The content is the firm's own.
 
 Live at https://valencia-agents-site-pj6uhtqcuq-uc.a.run.app. The site is
 not indexed yet: it serves a noindex header until launch.
