@@ -1,5 +1,3 @@
-import { cn } from '@/lib/utils'
-
 // A contour field: the level lines of a smooth surface, like a stress plot or a map's relief. Decorative; its motion lives in globals.css.
 const SIZE = 504
 const CELLS = 72
@@ -28,10 +26,10 @@ function cross(a: number, b: number, level: number) {
 }
 
 function round(value: number) {
-  return Math.round(value)
+  return Math.round(value * 10) / 10
 }
 
-// Marching squares: one path per level, made of the short segments that cross each cell.
+// Marching squares, then the cell segments chained into continuous lines, so a dash can travel along them.
 function contours() {
   const step = SIZE / CELLS
   const grid: number[][] = []
@@ -47,7 +45,7 @@ function contours() {
 
   return Array.from({ length: LEVELS }, (_, index) => {
     const level = low + ((high - low) * (index + 1)) / (LEVELS + 1)
-    const segments: string[] = []
+    const segments: [string, string][] = []
     for (let row = 0; row < CELLS; row += 1) {
       for (let column = 0; column < CELLS; column += 1) {
         const tl = grid[row][column]
@@ -56,10 +54,10 @@ function contours() {
         const bl = grid[row + 1][column]
         const x = column * step
         const y = row * step
-        const top = () => `${round(x + step * cross(tl, tr, level))} ${round(y)}`
-        const right = () => `${round(x + step)} ${round(y + step * cross(tr, br, level))}`
-        const bottom = () => `${round(x + step * cross(bl, br, level))} ${round(y + step)}`
-        const left = () => `${round(x)} ${round(y + step * cross(tl, bl, level))}`
+        const top = () => `${round(x + step * cross(tl, tr, level))},${round(y)}`
+        const right = () => `${round(x + step)},${round(y + step * cross(tr, br, level))}`
+        const bottom = () => `${round(x + step * cross(bl, br, level))},${round(y + step)}`
+        const left = () => `${round(x)},${round(y + step * cross(tl, bl, level))}`
         const code =
           (tl > level ? 8 : 0) + (tr > level ? 4 : 0) + (br > level ? 2 : 0) + (bl > level ? 1 : 0)
         const edges: (() => string)[][] =
@@ -85,46 +83,78 @@ function contours() {
             13: [[bottom, right]],
             14: [[left, bottom]],
           }[code] ?? []
-        for (const [from, to] of edges) segments.push(`M${from()} L${to()}`)
+        for (const [from, to] of edges) segments.push([from(), to()])
       }
     }
-    return { index, d: segments.join(' ') }
+    return { index, d: chain(segments) }
   })
 }
 
-// The lines darken toward the peaks, in four steps.
-const STROKES = [
-  'stroke-foreground/15',
-  'stroke-foreground/25',
-  'stroke-foreground/40',
-  'stroke-foreground/60',
-]
+// Joins segments end to end wherever two share a point, walking each line from a loose end or around a loop.
+function chain(segments: [string, string][]) {
+  const links = new Map<string, number[]>()
+  segments.forEach(([a, b], i) => {
+    links.set(a, [...(links.get(a) ?? []), i])
+    links.set(b, [...(links.get(b) ?? []), i])
+  })
+  const used = new Set<number>()
+  const lines: string[] = []
+  const walk = (start: number) => {
+    let [from, to] = segments[start]
+    used.add(start)
+    const points = [from, to]
+    for (;;) {
+      const next = (links.get(to) ?? []).find((i) => !used.has(i))
+      if (next === undefined) break
+      used.add(next)
+      const [a, b] = segments[next]
+      to = a === to ? b : a
+      points.push(to)
+    }
+    return points
+  }
+  // Open lines first, from their loose ends, so a loop is only walked when nothing else can reach it.
+  const all = segments.map((_, i) => i)
+  const ends = all.filter((i) => segments[i].some((p) => links.get(p)?.length === 1))
+  for (const start of [...ends, ...all]) {
+    if (used.has(start)) continue
+    const points = walk(start)
+    lines.push(`M${points[0]} L${points.slice(1).join(' ')}`)
+  }
+  return lines.join(' ')
+}
 
+// The lines sit lightly on the page; the dots that travel them carry the ink.
 const LINES = contours()
 
 export function HeroVisual() {
   return (
-    <div className="aspect-square w-full parallax overflow-hidden rounded-3xl bg-muted">
-      <svg
-        viewBox={`0 0 ${SIZE} ${SIZE}`}
-        aria-hidden="true"
-        data-nosnippet
-        className="size-full fade-edges"
-      >
+    <svg
+      viewBox={`0 0 ${SIZE} ${SIZE}`}
+      aria-hidden="true"
+      data-nosnippet
+      className="aspect-square w-full fade-edges"
+    >
+      {/* Each line's geometry once, then drawn twice: as the faint line, and as the dots that travel it. */}
+      <defs>
         {LINES.map((line) => (
-          <path
+          <path key={line.index} id={`contour-${line.index}`} d={line.d} />
+        ))}
+      </defs>
+      <g className="fill-none stroke-foreground/15" strokeWidth="1" strokeLinecap="round">
+        {LINES.map((line) => (
+          <use key={line.index} href={`#contour-${line.index}`} />
+        ))}
+      </g>
+      <g className="fill-none stroke-foreground/70">
+        {LINES.map((line) => (
+          <use
             key={line.index}
-            d={line.d}
-            className={cn(
-              'contour motion-reduce:animate-none',
-              STROKES[Math.floor((line.index / LEVELS) * STROKES.length)],
-            )}
-            fill="none"
-            strokeWidth="1.1"
-            strokeLinecap="round"
+            href={`#contour-${line.index}`}
+            className="current motion-reduce:animate-none"
           />
         ))}
-      </svg>
-    </div>
+      </g>
+    </svg>
   )
 }
