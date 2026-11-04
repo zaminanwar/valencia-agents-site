@@ -202,52 +202,26 @@ header {
   }
 }
 
-/* The hero field: each level resolves in on its own beat, then sways on its own phase, inner levels further than outer. */
-@keyframes contour-in {
-  from {
-    opacity: 0;
-    transform: scale(0.94);
-  }
-}
-
-@keyframes sway {
-  from {
-    transform: translate(calc(-1 * var(--amp)), calc(0.7 * var(--amp))) scale(1.02);
-  }
+/* The hero field: dots travel along each contour, each line at its own pace. The dash period and the offset match. */
+@keyframes travel {
   to {
-    transform: translate(var(--amp), calc(-0.8 * var(--amp))) scale(1.06);
+    stroke-dashoffset: -64;
   }
 }
 
-/* The field rises a little as the page scrolls, where scroll timelines exist. */
-@keyframes parallax {
-  to {
-    transform: translateY(-48px);
-  }
-}
-
-@utility contour {
-  /* The amplitude grows with the level: sibling-index() where it exists, one value everywhere else. */
-  --amp: calc(var(--level, 8) * 0.9px);
+@utility current {
   --level: sibling-index();
-  transform-box: view-box;
-  transform-origin: center;
-  animation:
-    contour-in 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) both,
-    sway 14s ease-in-out infinite alternate var(--ambient-motion-state, running);
-  animation-delay: calc(var(--level, 8) * 55ms), calc(var(--level, 8) * -1.1s);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-dasharray: 0 64;
+  animation: travel 7s linear infinite var(--ambient-motion-state, running);
+  animation-duration: calc(5.5s + var(--level, 8) * 0.35s);
+  animation-delay: calc(var(--level, 8) * -1.7s);
 }
 
-@utility parallax {
-  @supports (animation-timeline: scroll()) {
-    animation: parallax linear both;
-    animation-timeline: scroll();
-    animation-range: 0 80vh;
-  }
-}
-
+/* The field dissolves into the page: no edge, only lines that thin out toward the corners. */
 @utility fade-edges {
-  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 45%, transparent 100%);
+  mask-image: radial-gradient(ellipse 62% 62% at 50% 50%, black 25%, transparent 100%);
 }
 
 /* Rises into place without fading, so the text is never transparent. */
