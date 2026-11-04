@@ -1,10 +1,12 @@
 import { HomeLink } from '@/components/home-link'
+import { Mark } from '@/components/mark'
 import { siteConfig } from '@/config/site'
 
-// The wordmark is the site name in the heading face.
+// The mark beside the site name in the heading face.
 export function Logo() {
   return (
-    <span translate="no" className="flex items-center text-foreground">
+    <span translate="no" className="flex items-center gap-2.5 text-foreground">
+      <Mark />
       <span className="font-heading text-3xl leading-none tracking-tight">{siteConfig.name}</span>
     </span>
   )

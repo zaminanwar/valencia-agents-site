@@ -193,7 +193,7 @@ header {
 @theme {
   --animate-rise: rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   --animate-rise-fade: rise-fade 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-  --animate-drift: drift 40s ease-in-out infinite var(--ambient-motion-state, running);
+  --animate-drift: drift 24s ease-in-out infinite var(--ambient-motion-state, running);
 }
 
 /* Without JavaScript nothing can pause a loop, so the loop does not run. */
@@ -203,10 +203,13 @@ header {
   }
 }
 
-/* The hero field drifts a few pixels and breathes, slowly enough to be felt rather than seen. */
+/* The hero field drifts and breathes: slow, but meant to be seen. The scale keeps the box covered. */
 @keyframes drift {
-  50% {
-    transform: translate(-10px, 8px) scale(1.05);
+  33% {
+    transform: translate(-22px, 14px) scale(1.1);
+  }
+  66% {
+    transform: translate(14px, -18px) scale(1.12);
   }
 }
 
