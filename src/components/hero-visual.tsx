@@ -1,4 +1,6 @@
-// A contour field: the level lines of a smooth surface, like a stress plot or a map's relief. Decorative; it only drifts.
+import { cn } from '@/lib/utils'
+
+// A contour field: the level lines of a smooth surface, like a stress plot or a map's relief. Decorative; its motion lives in globals.css.
 const SIZE = 504
 const CELLS = 72
 const LEVELS = 20
@@ -102,24 +104,27 @@ const LINES = contours()
 
 export function HeroVisual() {
   return (
-    <svg
-      viewBox={`0 0 ${SIZE} ${SIZE}`}
-      aria-hidden="true"
-      data-nosnippet
-      className="aspect-square w-full rounded-3xl bg-muted"
-    >
-      <g className="origin-center animate-drift motion-reduce:animate-none">
+    <div className="aspect-square w-full parallax overflow-hidden rounded-3xl bg-muted">
+      <svg
+        viewBox={`0 0 ${SIZE} ${SIZE}`}
+        aria-hidden="true"
+        data-nosnippet
+        className="size-full fade-edges"
+      >
         {LINES.map((line) => (
           <path
             key={line.index}
             d={line.d}
-            className={STROKES[Math.floor((line.index / LEVELS) * STROKES.length)]}
+            className={cn(
+              'contour motion-reduce:animate-none',
+              STROKES[Math.floor((line.index / LEVELS) * STROKES.length)],
+            )}
             fill="none"
             strokeWidth="1.1"
             strokeLinecap="round"
           />
         ))}
-      </g>
-    </svg>
+      </svg>
+    </div>
   )
 }
